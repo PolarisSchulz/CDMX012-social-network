@@ -1,1 +1,1 @@
-const prueba = [Aby, Andy, Ivon];
+const prueba = [1, 2, 3];
