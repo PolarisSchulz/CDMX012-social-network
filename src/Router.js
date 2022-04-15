@@ -1,19 +1,15 @@
-import { Home } from './components/Home.js';
-import { Register } from './components/Register.js';
+import { inicio } from "./components/Inicio.js";
+import { Registro } from "./components/Registro.js";
 
-const rootDiv = document.getElementById('root');
+const rootDiv = document.getElementById("root");
 
 const routes = {
-  '/': Home,
-  '/register': Register,
+  "/": inicio,
+  "/registro": Registro,
 };
 
-export const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
+export const navegador = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
@@ -28,6 +24,6 @@ window.onpopstate = () => {
   rootDiv.appendChild(routes[window.location.pathname]());
 };
 
-const component = routes[window.location.pathname];
+const componente = routes[window.location.pathname];
 
-rootDiv.appendChild(component());
+rootDiv.appendChild(componente());
