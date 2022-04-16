@@ -1,6 +1,53 @@
-#logoVistaInicio{
-    width: 200px;
+:root {
+  --color-blue: #19acbd;
+  --color-pink: #e8098a;
+  --color-purple: #8268be;
+  --color-white: aliceblue;
 }
-#botonGoogle{
-    width: 50px;
+body {
+  font-family: "Roboto", sans-serif;
+}
+#seccionVistaInicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+#logoVistaInicio {
+  width: 300px;
+}
+#inicioTengoCuenta {
+  width: 310px;
+  height: 62px;
+  background-color: var(--color-blue);
+  margin: 25px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  color: aliceblue;
+  font-size: 22px;
+  font-weight: bolder;
+  box-shadow: 10px 10px rgba(0,0,0,0.5);
+}
+#inicioRegistro {
+  width: 310px;
+  height: 62px;
+  background-color: var(--color-purple);
+  margin: 25px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  color: aliceblue;
+  font-size: 22px;
+  font-weight: bolder;
+  box-shadow: 10px 10px rgba(0,0,0,0.5);
+}
+#botonGoogle {
+  width: 77px;
+}
+p,
+h1 {
+  color: aliceblue;
+  font-size: 22px;
+  font-weight: bolder;
 }

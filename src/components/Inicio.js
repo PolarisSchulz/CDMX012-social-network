@@ -5,6 +5,7 @@ import { navegador } from "../Router.js";
 export const inicio = () => {
   document.body.style.backgroundColor = "#E8098A";
   const seccionVistaInicio = document.createElement("section");
+  seccionVistaInicio.setAttribute("id","seccionVistaInicio")
 
   const logoVistaInicioDiv = document.createElement("div");
   const logoVistaInicioImagen = document.createElement("img");
@@ -13,6 +14,7 @@ export const inicio = () => {
 
   const yaTengoCuentaDiv = document.createElement("div");
   const botonYaTengoCuenta = document.createElement("button");
+  botonYaTengoCuenta.setAttribute("id", "inicioTengoCuenta")
 
   botonYaTengoCuenta.textContent = "Ya tengo cuenta";
   botonYaTengoCuenta.addEventListener("click", () => {
@@ -21,6 +23,7 @@ export const inicio = () => {
   //este boton es el de registro
   const registroDiv = document.createElement("div");
   const botonRegistro = document.createElement("button");
+  botonRegistro.setAttribute("id","inicioRegistro")
   const nodoParrafo = document.createElement("p");
   const nodoH1 = document.createElement("h1");
 

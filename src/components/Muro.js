@@ -2,8 +2,8 @@ import { navegador } from "../Router.js";
 //vista BLANCA POST
 
 export const Muro = () => {
-  document.body.style.backgroundColor = "#FFFFFF";
-  
+  document.body.style.backgroundColor = "aliceblue";
+
   const seccionMuro = document.createElement("section");
 
   const logoVistaMuroDiv = document.createElement("div");
