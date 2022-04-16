@@ -1,6 +1,7 @@
 import { navegador } from "../Router.js";
+//Vista ROSA
 
-//nuestro botón de registro de nuestra primera vista (rosa)
+//nuestro botón de registro de nuestra primera vista
 export const inicio = () => {
   const seccionVistaInicio = document.createElement("section");
 
@@ -14,7 +15,7 @@ export const inicio = () => {
 
   botonYaTengoCuenta.textContent = "Ya tengo cuenta";
   botonYaTengoCuenta.addEventListener("click", () => {
-    navegador("/yaTengoCuenta"); //PREGUNTAR!!!
+    navegador("/iniciarSesion"); //PREGUNTAR!!!
   });
   //este boton es el de registro
   const registroDiv = document.createElement("div");
@@ -38,7 +39,7 @@ export const inicio = () => {
   botonGoogle.src = "../images/logo-google.png";
 
   botonGoogle.addEventListener("click", () => {
-    navegador("/registro"); //PREGUNTAR!!! Y como sería el paso con firebase
+    navegador("/muro"); //PREGUNTAR!!! Y como sería el paso con firebase
   });
 
   seccionVistaInicio.append(

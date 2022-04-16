@@ -1,4 +1,5 @@
 import { navegador } from "../Router.js";
+//Vista MORADA
 
 export const Registro = () => {
   const seccionRegistro = document.createElement("section");
@@ -6,7 +7,7 @@ export const Registro = () => {
   const logoVistaRegistroDiv = document.createElement("div");
   const logoVistaRegistroImagen = document.createElement("img");
   logoVistaRegistroImagen.src = "../images/logo-principal.png";
-  logoVistaRegistroImagen.setAttribute("id", "logoVistaInicio");
+  logoVistaRegistroImagen.setAttribute("id", "logoVistaRegistro");
 
   const nodoH2 = document.createElement("h2");
   nodoH2.textContent = "Registro de usuario";
@@ -35,9 +36,12 @@ export const Registro = () => {
   registroInput.setAttribute("type", "submit");
   registroInput.setAttribute("id", "registroInput");
   registroInput.setAttribute("value", "Registrarme");
+  registroInput.addEventListener("click", () => {
+    navegador("/iniciarSesion");
+  });
 
 
-
+  //regresar a vista inicio
   const regresarDiv = document.createElement("div");
   const botonRegresarVistaRegistro = document.createElement("button");
   botonRegresarVistaRegistro.textContent = "Regresar";
