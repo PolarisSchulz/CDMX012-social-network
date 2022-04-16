@@ -2,6 +2,7 @@ import { navegador } from "../Router.js";
 //Vista MORADA
 
 export const Registro = () => {
+  document.body.style.backgroundColor = "#8268BE";
   const seccionRegistro = document.createElement("section");
 
   const logoVistaRegistroDiv = document.createElement("div");

@@ -1,7 +1,9 @@
 import { navegador } from "../Router.js";
 //vista BLANCA POST
 
-export const Muro = () =>{
+export const Muro = () => {
+  document.body.style.backgroundColor = "#FFFFFF";
+  
   const seccionMuro = document.createElement("section");
 
   const logoVistaMuroDiv = document.createElement("div");
@@ -11,11 +13,16 @@ export const Muro = () =>{
 
   const cerrarSesionDiv = document.createElement("div");
   const botonCerrarSesion = document.createElement("button");
-  botonCerrarSesion.textContent = "Cerrar sesión"
+  botonCerrarSesion.textContent = "Cerrar sesión";
 
   botonCerrarSesion.addEventListener("click", () => {
-    navegador("/"); 
+    navegador("/");
   });
-  seccionMuro.append( logoVistaMuroDiv, logoVistaMuroImagen, cerrarSesionDiv, botonCerrarSesion);
+  seccionMuro.append(
+    logoVistaMuroDiv,
+    logoVistaMuroImagen,
+    cerrarSesionDiv,
+    botonCerrarSesion
+  );
   return seccionMuro;
 };

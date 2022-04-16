@@ -3,6 +3,7 @@ import { navegador } from "../Router.js";
 
 //nuestro botón de registro de nuestra primera vista
 export const inicio = () => {
+  document.body.style.backgroundColor = "#E8098A";
   const seccionVistaInicio = document.createElement("section");
 
   const logoVistaInicioDiv = document.createElement("div");
