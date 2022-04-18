@@ -4,17 +4,18 @@ import { navegador } from "../Router.js";
 export const IniciarSesion = () => {
   document.body.style.backgroundColor = "#19ACBD";
   const seccionInicioDeSesion = document.createElement("section");
+  seccionInicioDeSesion.setAttribute("id","seccionInicioDeSesion");
 
   const logoVistaInicioDeSesionDiv = document.createElement("div");
   const logoVistaInicioDeSesionImagen = document.createElement("img");
   logoVistaInicioDeSesionImagen.src = "../images/logo-principal.png";
   logoVistaInicioDeSesionImagen.setAttribute(
     "id",
-    "logoVistaInicioDeSesionImagen"
+    "logoVistaInicioDeSesion"
   );
 
-  const nodoH2 = document.createElement("h2");
-  nodoH2.textContent = "Inicio de sesión";
+  const nodoH1IniciarSesion = document.createElement("h1");
+  nodoH1IniciarSesion.textContent = "Inicio de sesión";
 
   //aquí estan los inputs para el registro
   const datosUsuarioInicioDeSesionDiv = document.createElement("form");
@@ -24,13 +25,12 @@ export const IniciarSesion = () => {
   const correoInicioDeSesionInput = document.createElement("input");
   correoInicioDeSesionInput.setAttribute("id", "correoInicioDeSesionInput");
   correoInicioDeSesionInput.setAttribute("placeholder", "example@email.com");
+  correoInicioDeSesionInput.className = "cajasInicioDeSesion";
   // input para contraseña
   const contrasenaInicioDeSesionInput = document.createElement("input");
-  contrasenaInicioDeSesionInput.setAttribute(
-    "id",
-    "contrasenaInicioDeSesionInput"
-  );
+  contrasenaInicioDeSesionInput.setAttribute("id","contrasenaInicioDeSesionInput");
   contrasenaInicioDeSesionInput.setAttribute("placeholder", "Contraseña");
+  contrasenaInicioDeSesionInput.className = "cajasInicioDeSesion";
 
   //boton de registro
   const iniciarSesionInput = document.createElement("input");
@@ -43,7 +43,8 @@ export const IniciarSesion = () => {
 
   const regresarInicioDeSesionDiv = document.createElement("div");
   const botonRegresarVistaInicioDeSesion = document.createElement("button");
-  botonRegresarVistaInicioDeSesion.textContent = "Regresar";
+  botonRegresarVistaInicioDeSesion.textContent = "Volver";
+  botonRegresarVistaInicioDeSesion.setAttribute("id", "botonRegresarVistaInicioDeSesion")
   botonRegresarVistaInicioDeSesion.addEventListener("click", () => {
     navegador("/");
   });
@@ -51,7 +52,7 @@ export const IniciarSesion = () => {
   seccionInicioDeSesion.append(
     logoVistaInicioDeSesionDiv,
     logoVistaInicioDeSesionImagen,
-    nodoH2,
+    nodoH1IniciarSesion,
     datosUsuarioInicioDeSesionDiv,
     correoInicioDeSesionInput,
     contrasenaInicioDeSesionInput,

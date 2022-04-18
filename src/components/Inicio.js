@@ -14,7 +14,7 @@ export const inicio = () => {
 
   const yaTengoCuentaDiv = document.createElement("div");
   const botonYaTengoCuenta = document.createElement("button");
-  botonYaTengoCuenta.setAttribute("id", "inicioTengoCuenta")
+  botonYaTengoCuenta.setAttribute("id", "botonInicioTengoCuenta");
 
   botonYaTengoCuenta.textContent = "Ya tengo cuenta";
   botonYaTengoCuenta.addEventListener("click", () => {
@@ -23,17 +23,17 @@ export const inicio = () => {
   //este boton es el de registro
   const registroDiv = document.createElement("div");
   const botonRegistro = document.createElement("button");
-  botonRegistro.setAttribute("id","inicioRegistro")
-  const nodoParrafo = document.createElement("p");
-  const nodoH1 = document.createElement("h1");
+  botonRegistro.setAttribute("id","botonInicioRegistro");
+  const nodoH3 = document.createElement("h3");
+  const nodoH2 = document.createElement("h2");
 
   botonRegistro.textContent = "Registro";
   botonRegistro.addEventListener("click", () => {
     navegador("/registro"); //PREGUNTAR!!!
   });
 
-  nodoParrafo.textContent = "-o-";
-  nodoH1.textContent = "Registrate con: ";
+  nodoH3.textContent = "-o-";
+  nodoH2.textContent = "Registrate con: ";
 
   //aquí va a ir el registro con el logo de google
   const googleDiv = document.createElement("div");
@@ -53,8 +53,8 @@ export const inicio = () => {
     botonYaTengoCuenta,
     registroDiv,
     botonRegistro,
-    nodoParrafo,
-    nodoH1,
+    nodoH3,
+    nodoH2,
     googleDiv,
     botonGoogle
   );
