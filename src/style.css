@@ -9,17 +9,21 @@
   --color-purple: #8268be;
   --color-white: aliceblue;
 }
+
 body {
   font-family: "Roboto", sans-serif;
 }
-#seccionVistaInicio{
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+
+#seccionVistaInicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 #logoVistaInicio {
   width: 250px;
 }
+
 #botonInicioTengoCuenta {
   width: 310px;
   height: 62px;
@@ -31,8 +35,9 @@ body {
   color: aliceblue;
   font-size: 22px;
   font-weight: bolder;
-  box-shadow: 10px 10px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
 }
+
 #botonInicioRegistro {
   width: 310px;
   height: 62px;
@@ -44,12 +49,14 @@ body {
   color: aliceblue;
   font-size: 22px;
   font-weight: bolder;
-  box-shadow: 10px 10px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
   margin-top: 7px;
 }
+
 #botonGoogle {
   width: 77px;
 }
+
 h2,
 h3 {
   color: aliceblue;
@@ -57,32 +64,39 @@ h3 {
   font-weight: bolder;
   margin-top: 0;
 }
-#logoVistaRegistro{
+
+#logoVistaRegistro {
   width: 168px;
 }
-h1{
+
+h1 {
   color: aliceblue;
   font-size: 34px;
   font-family: 'Bakbak One', cursive;
   margin: top 0px;
   margin-bottom: 3px;
 }
-#seccionVistaRegistro, #seccionInicioDeSesion{
+
+#seccionVistaRegistro,
+#seccionInicioDeSesion {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.cajasDeRegistro{
+
+.cajasDeRegistro {
   width: 310px;
   height: 50px;
-  margin: 10px;;
+  margin: 10px;
+  ;
   border-radius: 15px;
   text-align: center;
   border: none;
   outline: none;
   font-size: 22px;
 }
-#registroInput{
+
+#registroInput {
   width: 310px;
   height: 50px;
   background: #19acbd;
@@ -91,11 +105,13 @@ h1{
   border: none;
   outline: none;
   border-radius: 15px;
-  box-shadow: 10px 10px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
   font-size: 20px;
   font-weight: bolder;
 }
-#botonRegresarRegistro, #botonRegresarVistaInicioDeSesion{
+
+#botonRegresarRegistro,
+#botonRegresarVistaInicioDeSesion {
   background-color: transparent;
   width: 200px;
   height: 30px;
@@ -105,36 +121,42 @@ h1{
   color: aliceblue;
   font-weight: bolder;
 }
-#logoVistaInicioDeSesion{
+
+#logoVistaInicioDeSesion {
   width: 195px;
 }
-.cajasInicioDeSesion{
+
+.cajasInicioDeSesion {
   width: 310px;
   height: 50px;
-  margin: 10px;;
+  margin: 10px;
+  ;
   border-radius: 15px;
   text-align: center;
   border: none;
   outline: none;
   font-size: 22px;
-  margin-top:31px;
+  margin-top: 31px;
 }
-#iniciarSesionInput{
+
+#iniciarSesionInput {
   width: 310px;
   height: 50px;
-  background:#e8098a;
+  background: #e8098a;
   color: aliceblue;
   margin-top: 30px;
   border: none;
   outline: none;
   border-radius: 15px;
-  box-shadow: 10px 10px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
   font-size: 20px;
   font-weight: bolder;
 }
-#botonRegresarVistaInicioDeSesion{
+
+#botonRegresarVistaInicioDeSesion {
   margin-top: 50px;
 }
-#logoVistaMuro{
+
+#logoVistaMuro {
   width: 120px;
 }

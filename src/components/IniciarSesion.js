@@ -1,52 +1,57 @@
-import { navegador } from "../Router.js";
-//vista AZUL
+// eslint-disable-next-line import/no-cycle
+import { navegador } from '../Router.js';
+import { iniciarSesionFirebase } from '../lib/FuncionesFirebase.js';
+// vista AZUL
 
 export const IniciarSesion = () => {
-  document.body.style.backgroundColor = "#19ACBD";
-  const seccionInicioDeSesion = document.createElement("section");
-  seccionInicioDeSesion.setAttribute("id","seccionInicioDeSesion");
+  document.body.style.backgroundColor = '#19ACBD';
+  const seccionInicioDeSesion = document.createElement('section');
+  seccionInicioDeSesion.setAttribute('id', 'seccionInicioDeSesion');
 
-  const logoVistaInicioDeSesionDiv = document.createElement("div");
-  const logoVistaInicioDeSesionImagen = document.createElement("img");
-  logoVistaInicioDeSesionImagen.src = "../images/logo-principal.png";
+  const logoVistaInicioDeSesionDiv = document.createElement('div');
+  const logoVistaInicioDeSesionImagen = document.createElement('img');
+  logoVistaInicioDeSesionImagen.src = '../images/logo-principal.png';
   logoVistaInicioDeSesionImagen.setAttribute(
-    "id",
-    "logoVistaInicioDeSesion"
+    'id',
+    'logoVistaInicioDeSesion',
   );
 
-  const nodoH1IniciarSesion = document.createElement("h1");
-  nodoH1IniciarSesion.textContent = "Inicio de sesión";
+  const nodoH1IniciarSesion = document.createElement('h1');
+  nodoH1IniciarSesion.textContent = 'Inicio de sesión';
 
-  //aquí estan los inputs para el registro
-  const datosUsuarioInicioDeSesionDiv = document.createElement("form");
-  datosUsuarioInicioDeSesionDiv.className = "datosUsuarioRegistro";
+  // aquí estan los inputs para el registro
+  const datosUsuarioInicioDeSesionDiv = document.createElement('form');
+  datosUsuarioInicioDeSesionDiv.className = 'datosUsuarioRegistro';
 
   // input para correo
-  const correoInicioDeSesionInput = document.createElement("input");
-  correoInicioDeSesionInput.setAttribute("id", "correoInicioDeSesionInput");
-  correoInicioDeSesionInput.setAttribute("placeholder", "example@email.com");
-  correoInicioDeSesionInput.className = "cajasInicioDeSesion";
+  const correoInicioDeSesionInput = document.createElement('input');
+  correoInicioDeSesionInput.setAttribute('id', 'correoInicioDeSesionInput');
+  correoInicioDeSesionInput.setAttribute('placeholder', 'example@email.com');
+  correoInicioDeSesionInput.className = 'cajasInicioDeSesion';
   // input para contraseña
-  const contrasenaInicioDeSesionInput = document.createElement("input");
-  contrasenaInicioDeSesionInput.setAttribute("id","contrasenaInicioDeSesionInput");
-  contrasenaInicioDeSesionInput.setAttribute("placeholder", "Contraseña");
-  contrasenaInicioDeSesionInput.className = "cajasInicioDeSesion";
+  const contrasenaInicioDeSesionInput = document.createElement('input');
+  contrasenaInicioDeSesionInput.setAttribute('id', 'contrasenaInicioDeSesionInput');
+  contrasenaInicioDeSesionInput.setAttribute('placeholder', 'Contraseña');
+  contrasenaInicioDeSesionInput.className = 'cajasInicioDeSesion';
 
-  //boton de registro
-  const iniciarSesionInput = document.createElement("input");
-  iniciarSesionInput.setAttribute("type", "submit");
-  iniciarSesionInput.setAttribute("id", "iniciarSesionInput");
-  iniciarSesionInput.setAttribute("value", "Iniciar sesión");
-  iniciarSesionInput.addEventListener("click", () => {
-    navegador("/muro"); //PREGUNTAR!!! Y como sería el paso con firebase
+  // boton de registro
+  const iniciarSesionInput = document.createElement('input');
+  iniciarSesionInput.setAttribute('type', 'submit');
+  iniciarSesionInput.setAttribute('id', 'iniciarSesionInput');
+  iniciarSesionInput.setAttribute('value', 'Iniciar sesión');
+  iniciarSesionInput.addEventListener('click', () => {
+    navegador('/muro');
+    const valorDeCorreo = document.getElementById('correoInicioDeSesionInput').value;
+    const valorDeContrasena = document.getElementById('contrasenaInicioDeSesionInput').value;
+    iniciarSesionFirebase(valorDeCorreo, valorDeContrasena);
   });
 
-  const regresarInicioDeSesionDiv = document.createElement("div");
-  const botonRegresarVistaInicioDeSesion = document.createElement("button");
-  botonRegresarVistaInicioDeSesion.textContent = "Volver";
-  botonRegresarVistaInicioDeSesion.setAttribute("id", "botonRegresarVistaInicioDeSesion")
-  botonRegresarVistaInicioDeSesion.addEventListener("click", () => {
-    navegador("/");
+  const regresarInicioDeSesionDiv = document.createElement('div');
+  const botonRegresarVistaInicioDeSesion = document.createElement('button');
+  botonRegresarVistaInicioDeSesion.textContent = 'Volver';
+  botonRegresarVistaInicioDeSesion.setAttribute('id', 'botonRegresarVistaInicioDeSesion');
+  botonRegresarVistaInicioDeSesion.addEventListener('click', () => {
+    navegador('/');
   });
 
   seccionInicioDeSesion.append(
@@ -58,7 +63,7 @@ export const IniciarSesion = () => {
     contrasenaInicioDeSesionInput,
     iniciarSesionInput,
     regresarInicioDeSesionDiv,
-    botonRegresarVistaInicioDeSesion
+    botonRegresarVistaInicioDeSesion,
   );
   return seccionInicioDeSesion;
 };
