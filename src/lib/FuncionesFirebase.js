@@ -10,8 +10,6 @@ import {
 // Todas las importaciones de firebase
 import inicializarApp from './InstalacionFirebase.js';
 
-// Se enlaza con el observador que se encuentra en el router.js
-// const auth = getAuth();
 // Registrar usuarios nuevos-la morada
 inicializarApp();
 
@@ -36,17 +34,20 @@ export async function iniciarSesionFirebase(email, password) {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      navegador('/muro');
       const user = userCredential.user;
-      // ...
+      user
+      navegador('/muro');
+
+      console.log("Ya andas dentro Andy")
     })
     .catch((error) => {
+
       const errorCode = error.code;
       const errorMessage = error.message;
+
+     
     });
 }
-
-// Cierre de sesion
 
 // Inicio de sesion con google
 export async function botonGoogleFirebase () {
@@ -72,3 +73,5 @@ export async function botonGoogleFirebase () {
       alert(errorCode || errorMessage || email || credential);
     });
 };
+
+// Cierre de sesion
