@@ -39,11 +39,12 @@ export const IniciarSesion = () => {
   iniciarSesionInput.setAttribute('type', 'submit');
   iniciarSesionInput.setAttribute('id', 'iniciarSesionInput');
   iniciarSesionInput.setAttribute('value', 'Iniciar sesión');
-  iniciarSesionInput.addEventListener('click', () => {
+  iniciarSesionInput.addEventListener('click', async() => {
     navegador('/muro');
-    const valorDeCorreo = document.getElementById('correoInicioDeSesionInput').value;
-    const valorDeContrasena = document.getElementById('contrasenaInicioDeSesionInput').value;
-    iniciarSesionFirebase(valorDeCorreo, valorDeContrasena);
+    const valorDeCorreo = correoInicioDeSesionInput.value;
+    const valorDeContrasena = contrasenaInicioDeSesionInput.value;
+    
+    await iniciarSesionFirebase(valorDeCorreo, valorDeContrasena);
   });
 
   const regresarInicioDeSesionDiv = document.createElement('div');
