@@ -1,10 +1,6 @@
-// eslint-disable-next-line import/no-cycle
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-// eslint-disable-next-line import/no-unresolved
-} from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
+  botonGoogleFirebase,
+} from '../lib/FuncionesFirebase.js';
 // eslint-disable-next-line import/no-cycle
 import { navegador } from '../Router.js';
 
@@ -45,33 +41,14 @@ export const inicio = () => {
   nodoH2.textContent = 'Registrate con: ';
 
   // aquí va a ir el registro con el logo de google
+
   const googleDiv = document.createElement('div');
   const botonGoogle = document.createElement('input');
   botonGoogle.setAttribute('type', 'image');
   botonGoogle.setAttribute('id', 'botonGoogle');
   botonGoogle.src = '../images/logo-google.png';
   botonGoogle.addEventListener('click', () => {
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        navegador('/muro');
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        alert(errorCode || errorMessage || email || credential);
-      });
+    botonGoogleFirebase();
   });
 
   seccionVistaInicio.append(
