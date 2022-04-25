@@ -38,6 +38,7 @@ rootDiv.appendChild(componente());
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    console.log({user});
     // User is signed in, see docs for a list of available properties
     navegador('/muro');
     const uid = user.uid;

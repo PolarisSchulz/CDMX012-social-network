@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
-
+import { navegador } from '../Router.js';
 
 // Todas las importaciones de firebase
 import inicializarApp from './InstalacionFirebase.js';
@@ -31,20 +31,22 @@ export async function registroFirebase(correo, contrasena) {
 
 //   inicio de usuarios con cuenta-la azul
 export async function iniciarSesionFirebase(email, password) {
+  console.log(email,password);
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       user
       navegador('/muro');
 
-      console.log("Ya andas dentro Andy")
+      alert("Ya andas dentro Andy")
     })
     .catch((error) => {
 
       const errorCode = error.code;
       const errorMessage = error.message;
 
+      console.log(errorMessage);
      
     });
 }
