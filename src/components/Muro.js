@@ -44,12 +44,13 @@ export const Muro = () => {
   botonDePublicaciones.src = '../images/enter-post.png';
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault()
-    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value)
-    .then(() => {console.log("se publico")})
-    .catch(() => {console.log("no se publico")}) 
+    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
   }); 
 
+  //.then(() => {console.log("se publico")})
+  //.catch(() => {console.log("no se publico")}) 
 
+  //guardarPublicaciones.reset(inputCajaDeCreacionDePublicaciones);
 
   // Formulario posts escritos
   /* const publicacionesFormulario = document.createElement('form');

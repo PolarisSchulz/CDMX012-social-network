@@ -12,7 +12,7 @@ import { firebaseConfig } from './apiKey.js'
 //export default function inicializarApp() {
   
 
- 
+//addDoc crea/genera id de firestore de las publicaciones (se pueden ver en el ejemplo de firestore: 77q57vx7eRqfnik8TZue)
 
 //db es la conexión a la base de datos
 const db = getFirestore();
