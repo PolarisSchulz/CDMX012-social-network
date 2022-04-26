@@ -99,4 +99,7 @@ signOut(auth).then(() => {
 });
 }
 
-//FIRESTORE (posts)
+//FIRESTORE (publicaciones)
+
+
+//Publicaciones hechas
