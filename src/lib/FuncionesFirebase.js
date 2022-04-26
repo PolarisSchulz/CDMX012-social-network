@@ -98,3 +98,5 @@ signOut(auth).then(() => {
   alert(error);
 });
 }
+
+//FIRESTORE (posts)

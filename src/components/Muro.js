@@ -23,26 +23,38 @@ export const Muro = () => {
     console.log("cerrar sesión");
   });
 
-  //Formulario para escribir post
-  const publicacionesFormulario = document.createElement('form');
-  publicacionesFormulario.className = 'datosPublicacionesDeFormulario';
+  //Formulario para hacer publicación
+  const creacionDePublicacionesFormulario = document.createElement('form');
+  creacionDePublicacionesFormulario.setAttribute('id', 'datosCreacionDePublicacionesDeFormulario');
 
 
-  // Input Caja de texto
+  // Input Caja de texto para escribir tu publicaciones
+  const inputCajaDeCreacionDeDePublicaciones = document.createElement('input');
+  inputCajaDeCreacionDeDePublicaciones.setAttribute('type', 'text');
+  inputCajaDeCreacionDeDePublicaciones.setAttribute('id', 'inputCajaDeCreacionDeDePublicaciones');
+  inputCajaDeCreacionDeDePublicaciones.setAttribute('placeholder', '¿A dónde estás pensando viajar?');
+  inputCajaDeCreacionDeDePublicaciones.className = 'inputCajaDeCreacionDeDePublicaciones';
+
+ //Icono/Boton para publicar
+  const botonDePublicaciones = document.createElement('input');
+  botonDePublicaciones.setAttribute('type', 'image');
+  botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
+  botonDePublicaciones.src = '../images/enter-post.png';
+  botonDePublicaciones.addEventListener('click', () => {
+  inputEditarPublicaciones();
+});
+
+  //Formulario posts escritos
+  /*const publicacionesFormulario = document.createElement('form');
+  publicacionesFormulario.setAttribute('id', 'datosPublicacionesDeFormulario');
+
+
+  // Input Caja de texto de la publicacion escrita
   const inputCajaDeTexto = document.createElement('input');
   inputCajaDeTexto.setAttribute('type', 'text');
   inputCajaDeTexto.setAttribute('id', 'inputCajaDeTexto');
-  inputCajaDeTexto.setAttribute('placeholder', '¿A dónde estás pensando viajar?');
+  inputCajaDeTexto.setAttribute('placeholder', 'PUBLICACIÓN');
   inputCajaDeTexto.className = 'inputCajaDeTexto';
-
-  // input boton publicar
-  const botonDePublicaciones = document.createElement('input');
-  botonDePublicaciones.setAttribute('type', 'submit');
-  botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
-  botonDePublicaciones.setAttribute('value', 'Registrarme');
-  botonDePublicaciones.addEventListener('click', () => {
-    console.log(botonDePublicaciones);
-  });
 
 // Input editar
   const inputEditarPublicaciones = document.createElement('input');
@@ -63,24 +75,26 @@ export const Muro = () => {
 });
 
  //Input Likes
-  const botonDeMeGustas = document.createElement('input');
-  botonDeMeGustas.setAttribute('type', 'image');
+  const botonDeMeGustas = document.createElement('button');
   botonDeMeGustas.setAttribute('id', 'botonDeMeGustas');
   botonDeMeGustas.src = '../images/pinata.png';
+  botonDeMeGustas.textContent = 'Genial';
   botonDeMeGustas.addEventListener('click', () => {
   botonDeMeGustas();
-});
-
+});*/
+  
 
   seccionMuro.append(
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     cerrarSesionDiv,
-    inputCajaDeTexto,
+    creacionDePublicacionesFormulario,
+    inputCajaDeCreacionDeDePublicaciones,
+    //inputCajaDeTexto,
     botonDePublicaciones,
-    inputEditarPublicaciones,
-    inputBasuraPublicaciones,
-    botonDeMeGustas,
+    //inputEditarPublicaciones,
+    //inputBasuraPublicaciones,
+    //botonDeMeGustas,
     botonCerrarSesion,
   );
   return seccionMuro;
