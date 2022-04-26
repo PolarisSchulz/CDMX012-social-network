@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-cycle
-//import { navegador } from '../Router.js';
- import { cerrarSesion } from '../lib/FuncionesFirebase.js';
+// import { navegador } from '../Router.js';
+import { cerrarSesion } from '../lib/FuncionesFirebase.js';
+import { guardarPublicaciones } from '../lib/InstalacionFirebase.js';
+
+
 // vista BLANCA POST
 
 export const Muro = () => {
@@ -20,34 +23,37 @@ export const Muro = () => {
   botonCerrarSesion.addEventListener('click', () => {
     // navegador('/');
     cerrarSesion(),
-    console.log("cerrar sesión");
+    console.log('cerrar sesión');
   });
 
-  //Formulario para hacer publicación
+  // Formulario para hacer publicación
   const creacionDePublicacionesFormulario = document.createElement('form');
   creacionDePublicacionesFormulario.setAttribute('id', 'datosCreacionDePublicacionesDeFormulario');
 
-
   // Input Caja de texto para escribir tu publicaciones
-  const inputCajaDeCreacionDeDePublicaciones = document.createElement('input');
-  inputCajaDeCreacionDeDePublicaciones.setAttribute('type', 'text');
-  inputCajaDeCreacionDeDePublicaciones.setAttribute('id', 'inputCajaDeCreacionDeDePublicaciones');
-  inputCajaDeCreacionDeDePublicaciones.setAttribute('placeholder', '¿A dónde estás pensando viajar?');
-  inputCajaDeCreacionDeDePublicaciones.className = 'inputCajaDeCreacionDeDePublicaciones';
+  const inputCajaDeCreacionDePublicaciones = document.createElement('input');
+  inputCajaDeCreacionDePublicaciones.setAttribute('type', 'text');
+  inputCajaDeCreacionDePublicaciones.setAttribute('id', 'inputCajaDeCreacionDePublicaciones');
+  inputCajaDeCreacionDePublicaciones.setAttribute('placeholder', '¿A dónde estás pensando viajar?');
+  inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
- //Icono/Boton para publicar
+  // Icono/Boton para publicar
   const botonDePublicaciones = document.createElement('input');
   botonDePublicaciones.setAttribute('type', 'image');
   botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
   botonDePublicaciones.src = '../images/enter-post.png';
-  botonDePublicaciones.addEventListener('click', () => {
-  inputEditarPublicaciones();
-});
+  botonDePublicaciones.addEventListener('click', (e) => {
+    e.preventDefault()
+    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value)
+    .then(() => {console.log("se publico")})
+    .catch(() => {console.log("no se publico")}) 
+  }); 
 
-  //Formulario posts escritos
-  /*const publicacionesFormulario = document.createElement('form');
+
+
+  // Formulario posts escritos
+  /* const publicacionesFormulario = document.createElement('form');
   publicacionesFormulario.setAttribute('id', 'datosPublicacionesDeFormulario');
-
 
   // Input Caja de texto de la publicacion escrita
   const inputCajaDeTexto = document.createElement('input');
@@ -81,20 +87,19 @@ export const Muro = () => {
   botonDeMeGustas.textContent = 'Genial';
   botonDeMeGustas.addEventListener('click', () => {
   botonDeMeGustas();
-});*/
-  
+}); */
 
   seccionMuro.append(
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     cerrarSesionDiv,
     creacionDePublicacionesFormulario,
-    inputCajaDeCreacionDeDePublicaciones,
-    //inputCajaDeTexto,
+    inputCajaDeCreacionDePublicaciones,
+    // inputCajaDeTexto,
     botonDePublicaciones,
-    //inputEditarPublicaciones,
-    //inputBasuraPublicaciones,
-    //botonDeMeGustas,
+    // inputEditarPublicaciones,
+    // inputBasuraPublicaciones,
+    // botonDeMeGustas,
     botonCerrarSesion,
   );
   return seccionMuro;

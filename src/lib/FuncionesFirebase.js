@@ -4,16 +4,21 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
+  signOut,
   
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
  import { navegador } from '../Router.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js';
+import { firebaseConfig } from './apiKey.js';
 
 // Todas las importaciones de firebase
-import inicializarApp from './InstalacionFirebase.js';
-
+//import inicializarApp from './InstalacionFirebase.js';
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ console.log(app);
+//}
 // Registrar usuarios nuevos-la morada
-inicializarApp();
+//inicializarApp();
 
 export async function registroFirebase(correo, contrasena) {
   const auth = getAuth();
@@ -98,8 +103,3 @@ signOut(auth).then(() => {
   alert(error);
 });
 }
-
-//FIRESTORE (publicaciones)
-
-
-//Publicaciones hechas
