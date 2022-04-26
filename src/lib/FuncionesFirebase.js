@@ -4,8 +4,10 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut
+  
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
-import { navegador } from '../Router.js';
+ import { navegador } from '../Router.js';
 
 // Todas las importaciones de firebase
 import inicializarApp from './InstalacionFirebase.js';
@@ -38,8 +40,13 @@ export async function iniciarSesionFirebase(email, password) {
       const user = userCredential.user;
       user
       navegador('/muro');
-
-      alert("Ya andas dentro Andy")
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido a Mochileando Ando',
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
     .catch((error) => {
 
@@ -77,3 +84,17 @@ export async function botonGoogleFirebase () {
 };
 
 // Cierre de sesion
+export const cerrarSesion = () => { 
+const auth = getAuth();
+signOut(auth).then(() => {
+  Swal.fire({
+    text: 'Sesión cerrada con éxito',
+    imageUrl: 'https://c.tenor.com/Ie086ZPnQzYAAAAC/tacos-nyan.gif',
+    imageWidth: 400,
+    imageAlt: 'Custom image',
+  })
+  navegador('/');
+}).catch((error) => {
+  alert(error);
+});
+}

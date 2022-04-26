@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { navegador } from '../Router.js';
+//import { navegador } from '../Router.js';
+ import { cerrarSesion } from '../lib/FuncionesFirebase.js';
 // vista BLANCA POST
 
 export const Muro = () => {
@@ -17,7 +18,9 @@ export const Muro = () => {
   botonCerrarSesion.textContent = 'Cerrar sesión';
 
   botonCerrarSesion.addEventListener('click', () => {
-    navegador('/');
+    // navegador('/');
+    cerrarSesion(),
+    console.log("cerrar sesión");
   });
   seccionMuro.append(
     logoVistaMuroDiv,

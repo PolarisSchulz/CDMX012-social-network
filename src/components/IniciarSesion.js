@@ -30,11 +30,12 @@ export const IniciarSesion = () => {
   correoInicioDeSesionInput.className = 'cajasInicioDeSesion';
   // input para contraseña
   const contrasenaInicioDeSesionInput = document.createElement('input');
+  contrasenaInicioDeSesionInput.setAttribute('type', 'password');
   contrasenaInicioDeSesionInput.setAttribute('id', 'contrasenaInicioDeSesionInput');
   contrasenaInicioDeSesionInput.setAttribute('placeholder', 'Contraseña');
   contrasenaInicioDeSesionInput.className = 'cajasInicioDeSesion';
 
-  // boton de registro
+  // boton de inicio de sesion
   const iniciarSesionInput = document.createElement('input');
   iniciarSesionInput.setAttribute('type', 'submit');
   iniciarSesionInput.setAttribute('id', 'iniciarSesionInput');
