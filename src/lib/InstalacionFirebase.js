@@ -19,7 +19,7 @@ const db = getFirestore();
 
 //FIRESTORE (publicaciones)
 export const guardarPublicaciones = (inputCajaDeCreacionDePublicaciones) => {
-  addDoc(collection(db, 'guardarPublicaciones'), {text: inputCajaDeCreacionDePublicaciones});
-}
+  addDoc(collection(db, 'guardarPublicaciones'), { text: inputCajaDeCreacionDePublicaciones});
+};
 
 //Publicaciones hechas
