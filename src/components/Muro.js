@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 // import { navegador } from '../Router.js';
 import { cerrarSesion } from '../lib/FuncionesFirebase.js';
-import { guardarPublicaciones } from '../lib/InstalacionFirebase.js';
+import { guardarPublicaciones, obtencionDePublicaciones } from '../lib/InstalacionFirebase.js';
 
 
 // vista BLANCA POST
@@ -38,19 +38,56 @@ export const Muro = () => {
   inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
   // Icono/Boton para publicar
-  const botonDePublicaciones = document.createElement('input');
-  botonDePublicaciones.setAttribute('type', 'image');
+  const botonDePublicaciones = document.createElement('button');
+  //botonDePublicaciones.setAttribute('type', 'image');
   botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
   botonDePublicaciones.src = '../images/enter-post.png';
   botonDePublicaciones.addEventListener('click', (e) => {
-    e.preventDefault()
-    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
+    e.preventDefault();
+    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value); 
+    creacionDePublicacionesFormulario.reset();
   }); 
 
-  //.then(() => {console.log("se publico")})
-  //.catch(() => {console.log("no se publico")}) 
+//Div para imprimir
+const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
+window.addEventListener('DOMContentLoaded', async () => {
+  const querySnapshot = await obtencionDePublicaciones();
+console.log(querySnapshot);
+  //querySnapshot: datos del momento
+let html= '';
+  querySnapshot.forEach(doc => {
+    const publicacion = doc.data();
+    console.log(publicacion.text);
+    html+= `
+    <div>
+     <p> ${publicacion.text} </p>
+    </div>
+    `
+  })
+  divQueAlmacenaLasPublicaciones1.innerHTML= html
+})
 
-  //guardarPublicaciones.reset(inputCajaDeCreacionDePublicaciones);
+
+
+/*const To = document.getElementById('T');
+window.addEventListener('DOMContentLoaded', async () => {
+  const querySnapshot = await obtencionDePublicaciones();
+console.log(querySnapshot);
+
+  //querySnapshot: datos del momento
+let html= '';
+  querySnapshot.forEach(doc => {
+    const publicacion = doc.data();
+    console.log(publicacion.text);
+    html+= `
+    <div>
+    <p> ${publicacion.text} </p>
+    </div>
+    `
+  })
+  To.innerHTML= html
+})*/
+
 
   // Formulario posts escritos
   /* const publicacionesFormulario = document.createElement('form');
@@ -89,15 +126,14 @@ export const Muro = () => {
   botonDeMeGustas.addEventListener('click', () => {
   botonDeMeGustas();
 }); */
-
-  seccionMuro.append(
+ creacionDePublicacionesFormulario.append(inputCajaDeCreacionDePublicaciones, botonDePublicaciones);
+  
+seccionMuro.append(
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     cerrarSesionDiv,
     creacionDePublicacionesFormulario,
-    inputCajaDeCreacionDePublicaciones,
     // inputCajaDeTexto,
-    botonDePublicaciones,
     // inputEditarPublicaciones,
     // inputBasuraPublicaciones,
     // botonDeMeGustas,

@@ -3,7 +3,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js';
 import { firebaseConfig } from './apiKey.js'
 // TO TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,4 +22,5 @@ export const guardarPublicaciones = (inputCajaDeCreacionDePublicaciones) => {
   addDoc(collection(db, 'guardarPublicaciones'), { text: inputCajaDeCreacionDePublicaciones});
 };
 
-//Publicaciones hechas
+//Obtención de publicaciones
+export const obtencionDePublicaciones = () => getDocs (collection(db, 'guardarPublicaciones'))
