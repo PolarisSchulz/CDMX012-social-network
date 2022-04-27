@@ -48,3 +48,6 @@ onAuthStateChanged(auth, (user) => {
     navegador('/');
   }
 });
+
+//export const divQueAlmacenaLasPublicaciones = document.createElement('div');
+//divQueAlmacenaLasPublicaciones.setAttribute('id', 'divQueAlmacenaLasPublicaciones');
