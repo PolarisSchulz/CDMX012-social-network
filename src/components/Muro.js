@@ -16,16 +16,6 @@ export const Muro = () => {
   logoVistaMuroImagen.src = '../images/logo-horizontal.png';
   logoVistaMuroImagen.setAttribute('id', 'logoVistaMuro');
 
-  const cerrarSesionDiv = document.createElement('div');
-  const botonCerrarSesion = document.createElement('button');
-  botonCerrarSesion.textContent = 'Cerrar sesión';
-
-  botonCerrarSesion.addEventListener('click', () => {
-    // navegador('/');
-    cerrarSesion(),
-    console.log('cerrar sesión');
-  });
-
   // Formulario para hacer publicación
   const creacionDePublicacionesFormulario = document.createElement('form');
   creacionDePublicacionesFormulario.setAttribute('id', 'datosCreacionDePublicacionesDeFormulario');
@@ -49,6 +39,8 @@ export const Muro = () => {
   }); 
 
 //Div para imprimir
+
+// jugar con esto divQueAlmacenaLasPublicaciones1
 const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
 window.addEventListener('DOMContentLoaded', async () => {
   const querySnapshot = await obtencionDePublicaciones();
@@ -64,8 +56,20 @@ let html= '';
     </div>
     `
   })
-  divQueAlmacenaLasPublicaciones1.innerHTML= html
-})
+  divQueAlmacenaLasPublicaciones1.innerHTML= html;
+});
+
+//Cerrar sesión 
+const cerrarSesionDiv = document.createElement('div');
+const botonCerrarSesion = document.createElement('button');
+botonCerrarSesion.textContent = 'Cerrar sesión';
+
+botonCerrarSesion.addEventListener('click', () => {
+  // navegador('/');
+  cerrarSesion(),
+  divQueAlmacenaLasPublicaciones1.reset();
+  console.log('cerrar sesión');
+});
 
 
 
@@ -80,9 +84,9 @@ let html= '';
     const publicacion = doc.data();
     console.log(publicacion.text);
     html+= `
-    <div>
-    <p> ${publicacion.text} </p>
-    </div>
+    < div>
+    < p> ${publicacion.text} < /p>
+    < /div>
     `
   })
   To.innerHTML= html
@@ -141,3 +145,24 @@ seccionMuro.append(
   );
   return seccionMuro;
 };
+
+
+//funcion por si acaso
+// const cargarDatos = async () =>{
+
+//   const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
+//     const querySnapshot = await obtencionDePublicaciones();
+//   console.log(querySnapshot);
+//     //querySnapshot: datos del momento
+//   let html= '';
+//     querySnapshot.forEach(doc => {
+//       const publicacion = doc.data();
+//       console.log(publicacion.text);
+//       html+= `
+//        < div>
+//          < p> ${publicacion.text} < /p>
+//        < /div>
+//       `
+//     })
+//     divQueAlmacenaLasPublicaciones1.innerHTML= html;
+// }
