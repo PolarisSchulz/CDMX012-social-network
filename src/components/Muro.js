@@ -1,11 +1,43 @@
 // eslint-disable-next-line import/no-cycle
 // import { navegador } from '../Router.js';
 import { cerrarSesion } from '../lib/FuncionesFirebase.js';
-import { guardarPublicaciones, obtencionDePublicaciones } from '../lib/InstalacionFirebase.js';
-
+import {
+  guardarPublicaciones,
+  obtencionDePublicaciones,
+  eliminarPublicaciones,
+} from '../lib/InstalacionFirebase.js';
 
 // vista BLANCA POST
 
+// Actualizaciones del muro de las publicaciones
+const mostrarEnElMuroActualizacionDePublicaciones = async () => {
+  const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones');
+  const querySnapshot = await obtencionDePublicaciones();
+  console.log(querySnapshot);
+  // querySnapshot: datos del momento
+  let html = '';
+  querySnapshot.forEach((doc) => {
+    const publicacion = doc.data();
+    console.log(publicacion.text);
+    html += `
+    <div>
+     <p> ${publicacion.text} </p>
+     <button class='borrarPublicacion' data-id='${doc.id}'>Borrar</button>
+    </div>
+    `;
+  });
+  divQueAlmacenaLasPublicaciones1.innerHTML = html;
+  const botonParaBorrarPublicaciones = divQueAlmacenaLasPublicaciones1.querySelectorAll('.borrarPublicacion');
+
+  // btn sale como una constante declarada en el forEach
+  botonParaBorrarPublicaciones.forEach((btn) => {
+    btn.addEventListener('click', ({ target: { dataset } }) => {
+      eliminarPublicaciones(dataset.id);
+    });
+  });
+};
+
+// Div de logo
 export const Muro = () => {
   document.body.style.backgroundColor = 'aliceblue';
 
@@ -18,62 +50,80 @@ export const Muro = () => {
 
   // Formulario para hacer publicación
   const creacionDePublicacionesFormulario = document.createElement('form');
-  creacionDePublicacionesFormulario.setAttribute('id', 'datosCreacionDePublicacionesDeFormulario');
+  creacionDePublicacionesFormulario.setAttribute(
+    'id',
+    'datosCreacionDePublicacionesDeFormulario',
+  );
 
   // Input Caja de texto para escribir tu publicaciones
   const inputCajaDeCreacionDePublicaciones = document.createElement('input');
   inputCajaDeCreacionDePublicaciones.setAttribute('type', 'text');
-  inputCajaDeCreacionDePublicaciones.setAttribute('id', 'inputCajaDeCreacionDePublicaciones');
-  inputCajaDeCreacionDePublicaciones.setAttribute('placeholder', '¿A dónde estás pensando viajar?');
+  inputCajaDeCreacionDePublicaciones.setAttribute(
+    'id',
+    'inputCajaDeCreacionDePublicaciones',
+  );
+  inputCajaDeCreacionDePublicaciones.setAttribute(
+    'placeholder',
+    '¿A dónde estás pensando viajar?',
+  );
   inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
   // Icono/Boton para publicar
   const botonDePublicaciones = document.createElement('button');
-  //botonDePublicaciones.setAttribute('type', 'image');
+  // botonDePublicaciones.setAttribute('type', 'image');
   botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
   botonDePublicaciones.src = '../images/enter-post.png';
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault();
-    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value); 
+    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
     creacionDePublicacionesFormulario.reset();
-  }); 
+    mostrarEnElMuroActualizacionDePublicaciones();
+  });
 
-//Div para imprimir
+  // Div para imprimir
 
-// jugar con esto divQueAlmacenaLasPublicaciones1
-const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
-window.addEventListener('DOMContentLoaded', async () => {
-  const querySnapshot = await obtencionDePublicaciones();
-console.log(querySnapshot);
-  //querySnapshot: datos del momento
-let html= '';
-  querySnapshot.forEach(doc => {
-    const publicacion = doc.data();
-    console.log(publicacion.text);
-    html+= `
+  // jugar con esto divQueAlmacenaLasPublicaciones1
+  const divQueAlmacenaLasPublicaciones1 = document.getElementById(
+    'divQueAlmacenaLasPublicaciones',
+  );
+  window.addEventListener('DOMContentLoaded', async () => {
+    const querySnapshot = await obtencionDePublicaciones();
+    console.log(querySnapshot);
+    // querySnapshot: datos del momento
+    let html = '';
+    querySnapshot.forEach((doc) => {
+      const publicacion = doc.data();
+      console.log(publicacion.text);
+      html += `
     <div>
-     <p> ${publicacion.text} </p>
+      <p> ${publicacion.text} </p>
+      <button class='borrarPublicacion' data-id='${doc.id}'>Borrar</button>
     </div>
-    `
-  })
-  divQueAlmacenaLasPublicaciones1.innerHTML= html;
-});
+    `;
+    });
+    divQueAlmacenaLasPublicaciones1.innerHTML = html;
+    const botonParaBorrarPublicaciones = divQueAlmacenaLasPublicaciones1.querySelectorAll('.borrarPublicacion');
 
-//Cerrar sesión 
-const cerrarSesionDiv = document.createElement('div');
-const botonCerrarSesion = document.createElement('button');
-botonCerrarSesion.textContent = 'Cerrar sesión';
+    // btn sale como una constante declarada en el forEach
+    botonParaBorrarPublicaciones.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        eliminarPublicaciones(dataset.id);
+      });
+    });
+  });
 
-botonCerrarSesion.addEventListener('click', () => {
-  // navegador('/');
-  cerrarSesion(),
-  divQueAlmacenaLasPublicaciones1.reset();
-  console.log('cerrar sesión');
-});
+  // Cerrar sesión
+  const cerrarSesionDiv = document.createElement('div');
+  const botonCerrarSesion = document.createElement('button');
+  botonCerrarSesion.textContent = 'Cerrar sesión';
 
+  botonCerrarSesion.addEventListener('click', () => {
+    // navegador('/');
+    cerrarSesion(), divQueAlmacenaLasPublicaciones1.reset();
+    console.log('cerrar sesión');
+  });
 
-
-/*const To = document.getElementById('T');
+  /* const To = document.getElementById('T');
 window.addEventListener('DOMContentLoaded', async () => {
   const querySnapshot = await obtencionDePublicaciones();
 console.log(querySnapshot);
@@ -90,8 +140,7 @@ let html= '';
     `
   })
   To.innerHTML= html
-})*/
-
+}) */
 
   // Formulario posts escritos
   /* const publicacionesFormulario = document.createElement('form');
@@ -130,9 +179,12 @@ let html= '';
   botonDeMeGustas.addEventListener('click', () => {
   botonDeMeGustas();
 }); */
- creacionDePublicacionesFormulario.append(inputCajaDeCreacionDePublicaciones, botonDePublicaciones);
-  
-seccionMuro.append(
+  creacionDePublicacionesFormulario.append(
+    inputCajaDeCreacionDePublicaciones,
+    botonDePublicaciones,
+  );
+
+  seccionMuro.append(
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     cerrarSesionDiv,
@@ -146,8 +198,7 @@ seccionMuro.append(
   return seccionMuro;
 };
 
-
-//funcion por si acaso
+// funcion por si acaso
 // const cargarDatos = async () =>{
 
 //   const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
