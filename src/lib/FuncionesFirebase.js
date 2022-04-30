@@ -5,20 +5,21 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  
+
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
- import { navegador } from '../Router.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js';
+// eslint-disable-next-line import/no-cycle
+import { navegador } from '../Router.js';
 import { firebaseConfig } from './apiKey.js';
 
 // Todas las importaciones de firebase
-//import inicializarApp from './InstalacionFirebase.js';
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
- console.log(app);
-//}
+// import inicializarApp from './InstalacionFirebase.js';
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+console.log(app);
+// }
 // Registrar usuarios nuevos-la morada
-//inicializarApp();
+// inicializarApp();
 
 export async function registroFirebase(correo, contrasena) {
   const auth = getAuth();
@@ -38,33 +39,31 @@ export async function registroFirebase(correo, contrasena) {
 
 //   inicio de usuarios con cuenta-la azul
 export async function iniciarSesionFirebase(email, password) {
-  console.log(email,password);
+  console.log(email, password);
   const auth = getAuth();
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      user
+      user;
       navegador('/muro');
-      
+
       Swal.fire({
         icon: 'success',
         title: 'Bienvenido a Mochileando Ando',
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
     })
     .catch((error) => {
-
       const errorCode = error.code;
       const errorMessage = error.message;
 
       console.log(errorMessage);
-     
     });
 }
 
 // Inicio de sesion con google
-export async function botonGoogleFirebase () {
+export async function botonGoogleFirebase() {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -86,20 +85,20 @@ export async function botonGoogleFirebase () {
       const credential = GoogleAuthProvider.credentialFromError(error);
       alert(errorCode || errorMessage || email || credential);
     });
-};
+}
 
 // Cierre de sesion
-export const cerrarSesion = () => { 
-const auth = getAuth();
-signOut(auth).then(() => {
-  Swal.fire({
-    text: 'Sesión cerrada con éxito',
-    imageUrl: 'https://c.tenor.com/Ie086ZPnQzYAAAAC/tacos-nyan.gif',
-    imageWidth: 400,
-    imageAlt: 'Custom image',
-  })
-  navegador('/');
-}).catch((error) => {
-  alert(error);
-});
-}
+export const cerrarSesion = () => {
+  const auth = getAuth();
+  signOut(auth).then(() => {
+    Swal.fire({
+      text: 'Sesión cerrada con éxito',
+      imageUrl: 'https://c.tenor.com/Ie086ZPnQzYAAAAC/tacos-nyan.gif',
+      imageWidth: 400,
+      imageAlt: 'Custom image',
+    });
+    navegador('/');
+  }).catch((error) => {
+    alert(error);
+  });
+};
