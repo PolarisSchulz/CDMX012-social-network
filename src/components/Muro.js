@@ -3,7 +3,6 @@
 import { cerrarSesion } from "../lib/FuncionesFirebase.js";
 import {
   guardarPublicaciones,
-  onBtenerPublicaciones,
   obtencionDePublicaciones,
   eliminarPublicaciones,
 } from "../lib/InstalacionFirebase.js";
@@ -62,7 +61,8 @@ export const Muro = () => {
   );
   //DOMContentLoaded recarga una vez toda la impresion 
   window.addEventListener("DOMContentLoaded", async () => {
-    onBtenerPublicaciones ((querySnapshot) => {
+    const querySnapshot = await obtencionDePublicaciones();
+    console.log(querySnapshot);
     //querySnapshot: datos del momento
     let html = "";
     querySnapshot.forEach((doc) => {
@@ -76,7 +76,6 @@ export const Muro = () => {
     `;
     });
     divQueAlmacenaLasPublicaciones1.innerHTML = html;
-    });
     const botonParaBorrarPublicaciones = divQueAlmacenaLasPublicaciones1.querySelectorAll(".borrarPublicacion");
 
     //btn sale como una constante declarada en el forEach
@@ -157,7 +156,7 @@ let html= '';
 }); */
   creacionDePublicacionesFormulario.append(
     inputCajaDeCreacionDePublicaciones,
-    botonDePublicaciones,
+    botonDePublicaciones
   );
 
   seccionMuro.append(
@@ -169,7 +168,7 @@ let html= '';
     // inputEditarPublicaciones,
     // inputBasuraPublicaciones,
     // botonDeMeGustas,
-    botonCerrarSesion,
+    botonCerrarSesion
   );
   return seccionMuro;
 };
