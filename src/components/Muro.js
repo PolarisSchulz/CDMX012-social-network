@@ -75,7 +75,7 @@ export const Muro = () => {
     e.preventDefault();
     guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
     resetearDivPrincipal();
-    creacionDePublicacionesFormulario.reset();
+    inputCajaDeCreacionDePublicaciones.value = '';
   });
 
   // Div para imprimir
