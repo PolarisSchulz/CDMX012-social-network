@@ -192,3 +192,17 @@ height: 38px;
   width: 110px;
 height: 38px;
 }
+
+.seccionMuro{
+  background: #19acbd;
+  width: 428px;
+  height:124px;
+  display: flex;
+}
+
+#logoVistaMuroImagen{
+  width: 121px;
+}
+
+
+
