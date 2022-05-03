@@ -16,7 +16,7 @@ import { navegador } from '../Router.js';
 // Div de logo
 export const Muro = () => {
   document.body.style.backgroundColor = 'aliceblue';
-  const container = document.createElement("main")
+  const container = document.createElement('main');
 
   const seccionMuro = document.createElement('section');
   seccionMuro.className = 'seccionMuro';
@@ -60,6 +60,12 @@ export const Muro = () => {
   );
   inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
+  const resetearDivPrincipal = () => {
+    if (divQueAlmacenaLasPublicaciones1.childNodes.length > 0) {
+      console.log('🤡 div que almacena tiene hijos');
+      divQueAlmacenaLasPublicaciones1.innerText = '';
+    }
+  };
   // Icono/Boton para publicar
   const botonDePublicaciones = document.createElement('button');
   // botonDePublicaciones.setAttribute('type', 'image');
@@ -68,6 +74,7 @@ export const Muro = () => {
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault();
     guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
+    resetearDivPrincipal();
     creacionDePublicacionesFormulario.reset();
   });
 
@@ -75,80 +82,51 @@ export const Muro = () => {
   // const querySnapshot = await obtencionDePublicaciones();
   // jugar con esto divQueAlmacenaLasPublicaciones1
   let divQueAlmacenaLasPublicaciones1 = document.createElement('div');
-  divQueAlmacenaLasPublicaciones1.setAttribute("id", "muroDePublicaciones")
+  divQueAlmacenaLasPublicaciones1.setAttribute('id', 'muroDePublicaciones');
   // const divQueAlmacenaLasPublicaciones1 = document.getElementById("divQueAlmacenaLasPublicaciones")
   // DOMContentLoaded recarga una vez toda la impresion
-  window.addEventListener('DOMContentLoaded', () => {
-    // obtencionDePublicaciones();
-  // onBtenerPublicaciones(async () => {
-  //   // querySnapshot: datos del momento
-  //   // let html = ""
-  //   const querySnapshot = await obtencionDePublicaciones();
-  //   querySnapshot.forEach((doc) => {
-  //       const publicacion = doc.data();
-  //       console.log("publicación", publicacion);
-  //      const tituloPublicacion = document.createElement('h1');
-  //      tituloPublicacion.innerText = publicacion.text;
-  //     //  html += "Prueba"
-  //      console.log("contenido de la publicación",tituloPublicacion);
-       
-  //     //  divQueAlmacenaLasPublicaciones1.textContent ="dddddd"
-  //      divQueAlmacenaLasPublicaciones1.append(tituloPublicacion);
-  //     });
-  //   });
-    console.log("estado de div", divQueAlmacenaLasPublicaciones1)
-    
-
-
-    // const botonParaBorrarPublicaciones = divQueAlmacenaLasPublicaciones1.querySelectorAll('.borrarPublicacion');
-
-    // btn sale como una constante declarada en el forEach
-    // botonParaBorrarPublicaciones.forEach((btn) => {
-    //   btn.addEventListener('click', async ({ target: { dataset } }) => {
-    //     await eliminarPublicaciones(dataset.id);
-    //     navegador('/muro');
-    //   });
-    // });
-  });
 
   onBtenerPublicaciones(async () => {
     // querySnapshot: datos del momento
     // let html = ""
     const querySnapshot = await obtencionDePublicaciones();
-    querySnapshot.forEach((doc) => {
-        const publicacion = doc.data();
-        console.log("publicación", publicacion);
-       const tituloPublicacion = document.createElement('h1');
-       tituloPublicacion.style.color = "black"
-       tituloPublicacion.innerText = publicacion.text;
-      //  html += "Prueba"
-       console.log("contenido de la publicación",tituloPublicacion);
-       
-      //  divQueAlmacenaLasPublicaciones1.textContent ="dddddd"
-       divQueAlmacenaLasPublicaciones1.append(tituloPublicacion);
-      });
-    });
+    // si divquealamcena las publicaciones ya tiene  contenido borrar el contenido
+    // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
 
-seccionMuro.append(
+    querySnapshot.forEach((doc) => {
+      const publicacion = doc.data();
+      // console.log("publicación", publicacion);
+      const tituloPublicacion = document.createElement('h1');
+      tituloPublicacion.style.color = 'black';
+      tituloPublicacion.innerText = publicacion.text;
+      //  html += "Prueba"
+      //  console.log("contenido de la publicación",tituloPublicacion);
+      //  divQueAlmacenaLasPublicaciones1.textContent ="dddddd"
+
+      divQueAlmacenaLasPublicaciones1.append(tituloPublicacion);
+    });
+  });
+
+  seccionMuro.append(
 
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     botonCerrarSesion,
-);
+  );
 
-    container.append(seccionMuro, inputCajaDeCreacionDePublicaciones,botonDePublicaciones, divQueAlmacenaLasPublicaciones1  );
+  container.append(seccionMuro, inputCajaDeCreacionDePublicaciones, botonDePublicaciones, divQueAlmacenaLasPublicaciones1);
 
   // seccionMuro.append(
-    
+
   //   logoVistaMuroDiv,
   //   logoVistaMuroImagen,
-    // cerrarSesionDiv,
-    // inputCajaDeTexto,
-    // inputEditarPublicaciones,
-    // inputBasuraPublicaciones,
-    // botonDeMeGustas,
-    // botonCerrarSesion,
-    // inputCajaDeCreacionDePublicaciones,
+  // cerrarSesionDiv,
+  // inputCajaDeTexto,
+  // inputEditarPublicaciones,
+  // inputBasuraPublicaciones,
+  // botonDeMeGustas,
+  // botonCerrarSesion,
+  // inputCajaDeCreacionDePublicaciones,
   // );
   return container;
 };
