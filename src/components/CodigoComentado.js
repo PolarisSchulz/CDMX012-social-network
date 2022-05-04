@@ -1,3 +1,13 @@
+  // // Formulario para hacer publicación
+  // const seccionParaEscribirTuPublicacion = document.createElement('section');
+  // seccionParaEscribirTuPublicacion.className = 'seccionParaEscribirTuPublicacion';
+  // const creacionDePublicacionesFormulario = document.createElement('form');
+  // creacionDePublicacionesFormulario.setAttribute(
+  //   'id',
+  //   'datosCreacionDePublicacionesDeFormulario',
+  // );
+
+
 
   /* const To = document.getElementById('T');
 window.addEventListener('DOMContentLoaded', async () => {
@@ -55,3 +65,24 @@ let html= '';
   botonDeMeGustas.addEventListener('click', () => {
   botonDeMeGustas();
 }); */
+
+
+// funcion por si acaso
+// const cargarDatos = async () =>{
+
+//   const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
+//     const querySnapshot = await obtencionDePublicaciones();
+//   console.log(querySnapshot);
+//     //querySnapshot: datos del momento
+//   let html= '';
+//     querySnapshot.forEach(doc => {
+//       const publicacion = doc.data();
+//       console.log(publicacion.text);
+//       html+= `
+//        < div>
+//          < p> ${publicacion.text} < /p>
+//        < /div>
+//       `
+//     })
+//     divQueAlmacenaLasPublicaciones1.innerHTML= html;
+// }

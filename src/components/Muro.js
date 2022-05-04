@@ -1,3 +1,5 @@
+// Importaciones
+
 // eslint-disable-next-line import/no-cycle
 // import { navegador } from '../Router.js';
 // eslint-disable-next-line import/no-cycle
@@ -11,42 +13,45 @@ import {
 // eslint-disable-next-line import/no-cycle
 import { navegador } from '../Router.js';
 
-// vista BLANCA POST
 
-// Div de logo
+
+//Imprimir todo en el Muro
 export const Muro = () => {
-  document.body.style.backgroundColor = 'aliceblue';
-  const container = document.createElement('main');
+  // Seccion que genera el área del header, donde abarcamos el logo y el boton de cerrar sesion
 
-  const seccionMuro = document.createElement('section');
-  seccionMuro.className = 'seccionMuro';
-  const logoVistaMuroDiv = document.createElement('div');
-  logoVistaMuroDiv.className = 'logoVistaMuroDiv';
-  const logoVistaMuroImagen = document.createElement('img');
-  logoVistaMuroImagen.src = '../images/logo-horizontal.png';
-  logoVistaMuroImagen.setAttribute('id', 'logoVistaMuro');
+    //Contenedor
+    document.body.style.backgroundColor = 'aliceblue';
+    const container = document.createElement('body');
 
-  // Cerrar sesión
-  const cerrarSesionDiv = document.createElement('div');
-  cerrarSesionDiv.className = 'cerrarSesionDiv';
-  const botonCerrarSesion = document.createElement('button');
-  botonCerrarSesion.textContent = 'Cerrar sesión';
+    //Seccion azul del Menu con el logo y cerrar sesion - HEADER
+    const seccionMuro = document.createElement('header');
+    seccionMuro.className = 'seccionMuro';
 
-  botonCerrarSesion.addEventListener('click', () => {
-    // navegador('/');
-    cerrarSesion(), divQueAlmacenaLasPublicaciones1.reset();
-    console.log('cerrar sesión');
-  });
+    // Div para insertar el logo
+    const logoVistaMuroDiv = document.createElement('div');
+    logoVistaMuroDiv.className = 'logoVistaMuroDiv';
+    const logoVistaMuroImagen = document.createElement('img');
+    logoVistaMuroImagen.src = '../images/logo-horizontal.png';
+    logoVistaMuroImagen.setAttribute('id', 'logoVistaMuro');
 
-  // Formulario para hacer publicación
-  const seccionParaEscribirTuPublicacion = document.createElement('section');
-  seccionParaEscribirTuPublicacion.className = 'seccionParaEscribirTuPublicacion';
-  const creacionDePublicacionesFormulario = document.createElement('form');
-  creacionDePublicacionesFormulario.setAttribute(
-    'id',
-    'datosCreacionDePublicacionesDeFormulario',
-  );
+    // Div para insertar el boton de cerrar sesion
+    const cerrarSesionDiv = document.createElement('div');
+    cerrarSesionDiv.className = 'cerrarSesionDiv';
+    const botonCerrarSesion = document.createElement('button');
+    botonCerrarSesion.textContent = 'Cerrar sesión';
+    botonCerrarSesion.addEventListener('click', () => {
+        // Lleva al navegador('/'), se encuentra en el rooter
+        // eslint-disable-next-line no-unused-expressions
+      cerrarSesion(), textoDeLaPublicacion.reset();
+      console.log('cerrar sesión');
+    });
 
+  // Seccion blanca del cuerpo - MAIN
+  const areaParaEscribirPublicaciones = document.createElement('main');  //Aquí empieza el color blanquito
+
+  // area de escribir el texto a publicar - ¿A donde estas pensando viajar?
+  const bloqueParaEscribirLaPublicacion = document.createElement('section');
+  bloqueParaEscribirLaPublicacion.className = 'bloqueParaEscribirLaPublicacion';
   // Input Caja de texto para escribir tu publicaciones
   const inputCajaDeCreacionDePublicaciones = document.createElement('input');
   inputCajaDeCreacionDePublicaciones.setAttribute('type', 'text');
@@ -61,11 +66,12 @@ export const Muro = () => {
   inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
   const resetearDivPrincipal = () => {
-    if (divQueAlmacenaLasPublicaciones1.childNodes.length > 0) {
-      console.log('🤡 div que almacena tiene hijos');
-      divQueAlmacenaLasPublicaciones1.innerText = '';
+    if (textoDeLaPublicacion.childNodes.length > 0) {
+      // console.log('div que almacena tiene hijos');
+      textoDeLaPublicacion.innerText = '';
     }
   };
+
   // Icono/Boton para publicar
   const botonDePublicaciones = document.createElement('button');
   // botonDePublicaciones.setAttribute('type', 'image');
@@ -77,76 +83,65 @@ export const Muro = () => {
     resetearDivPrincipal();
     inputCajaDeCreacionDePublicaciones.value = '';
   });
+  // Aqui termina area de escribir el texto a publicar - ¿A donde estas pensando viajar?
 
-  // Div para imprimir
-  // const querySnapshot = await obtencionDePublicaciones();
-  // jugar con esto divQueAlmacenaLasPublicaciones1
-  let divQueAlmacenaLasPublicaciones1 = document.createElement('div');
-  divQueAlmacenaLasPublicaciones1.setAttribute('id', 'muroDePublicaciones');
-  // const divQueAlmacenaLasPublicaciones1 = document.getElementById("divQueAlmacenaLasPublicaciones")
-  // DOMContentLoaded recarga una vez toda la impresion
 
-  onBtenerPublicaciones(async () => {
-    // querySnapshot: datos del momento
-    // let html = ""
-    const querySnapshot = await obtencionDePublicaciones();
-    // si divquealamcena las publicaciones ya tiene  contenido borrar el contenido
-    // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
+  // Todo donde se acomodan el los textos publicados mas boton editar, masboton borrar, mas boton chido
+  const areaTextoEdicionChidoMasBorrado = document.createElement('section') //Borde rosita - Revisar Imagen
+  areaTextoEdicionChidoMasBorrado.className = 'areaTextoEdicionChidoMasBorrado';
 
-    querySnapshot.forEach((doc) => {
-      const publicacion = doc.data();
-      // console.log("publicación", publicacion);
-      const tituloPublicacion = document.createElement('h1');
-      tituloPublicacion.style.color = 'black';
-      tituloPublicacion.innerText = publicacion.text;
-      //  html += "Prueba"
-      //  console.log("contenido de la publicación",tituloPublicacion);
-      //  divQueAlmacenaLasPublicaciones1.textContent ="dddddd"
+    // Area donde se acomodan los post publicados
+    const areaDondeSeAcomodanLasPublicaciones = document.createElement('section') //Borde verde - Revisar Imagen
+    areaDondeSeAcomodanLasPublicaciones.setAttribute('id', 'areaDondeSeAcomodanLasPublicaciones');
 
-      divQueAlmacenaLasPublicaciones1.append(tituloPublicacion);
-    });
-  });
+    // seccion negra de texto y edicion
+    const seccionDeTextoMasEdicion = document.createElement('section');
+    seccionDeTextoMasEdicion.className = "seccionDeTextoMasEdicion" //Bordes Negros -Revisar Imagen
+      // Div para imprimir
+      let textoDeLaPublicacion = document.createElement('div');
+      textoDeLaPublicacion.setAttribute('id', 'muroDePublicaciones');
+      // eslint-disable-next-line max-len
 
+      onBtenerPublicaciones(async () => {
+        // querySnapshot: datos del momento
+        const querySnapshot = await obtencionDePublicaciones();
+        // si divquealamcena las publicaciones ya tiene  contenido borrar el contenido
+        // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
+
+        querySnapshot.forEach((doc) => {
+          const publicacion = doc.data();
+          const tituloPublicacion = document.createElement('h1');
+          tituloPublicacion.style.color = 'black';
+          tituloPublicacion.innerText = publicacion.text;
+          textoDeLaPublicacion.append(tituloPublicacion);
+        });
+      });
+      
+      // Boton de editar
+    
+    
+    // Area donde se acomodan el boton de likes y el boton de borrar
+    const areaDondeSeAcomodaChidoMasBorrar = document.createElement('section') //Borde azul - Revisar Imagen
+    areaDondeSeAcomodaChidoMasBorrar.className = 'areaDondeSeAcomodaChidoMasBorrar';
+
+      // Boton de Borrar
+
+      // Boton de Likes
+  
+
+  
+  // Hasta aqui termina el main
+
+
+// Nodos que se imprimen en el DOM
   seccionMuro.append(
-
     logoVistaMuroDiv,
     logoVistaMuroImagen,
     botonCerrarSesion,
   );
 
-  container.append(seccionMuro, inputCajaDeCreacionDePublicaciones, botonDePublicaciones, divQueAlmacenaLasPublicaciones1);
+  // eslint-disable-next-line max-len
+  container.append(seccionMuro, inputCajaDeCreacionDePublicaciones, botonDePublicaciones, textoDeLaPublicacion);
 
-  // seccionMuro.append(
-
-  //   logoVistaMuroDiv,
-  //   logoVistaMuroImagen,
-  // cerrarSesionDiv,
-  // inputCajaDeTexto,
-  // inputEditarPublicaciones,
-  // inputBasuraPublicaciones,
-  // botonDeMeGustas,
-  // botonCerrarSesion,
-  // inputCajaDeCreacionDePublicaciones,
-  // );
   return container;
 };
-
-// funcion por si acaso
-// const cargarDatos = async () =>{
-
-//   const divQueAlmacenaLasPublicaciones1 = document.getElementById('divQueAlmacenaLasPublicaciones')
-//     const querySnapshot = await obtencionDePublicaciones();
-//   console.log(querySnapshot);
-//     //querySnapshot: datos del momento
-//   let html= '';
-//     querySnapshot.forEach(doc => {
-//       const publicacion = doc.data();
-//       console.log(publicacion.text);
-//       html+= `
-//        < div>
-//          < p> ${publicacion.text} < /p>
-//        < /div>
-//       `
-//     })
-//     divQueAlmacenaLasPublicaciones1.innerHTML= html;
-// }
