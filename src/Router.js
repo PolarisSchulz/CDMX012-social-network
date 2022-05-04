@@ -31,7 +31,7 @@ window.onpopstate = () => {
 
 const componente = routes[window.location.pathname];
 
-rootDiv.appendChild(componente());
+rootDiv.append(componente());
 
 // observador es el vato que vijila que andas logueado, importado en la linea 1 de Router.js
 

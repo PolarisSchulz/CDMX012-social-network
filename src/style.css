@@ -1,7 +1,7 @@
-/* body, div, h1, h2, h3, input, p {
+ body, div, h1, h2, h3, input, p {
   margin: 0;
   padding: 0;
-} */
+} 
 
 :root {
   --color-blue: #19acbd;
@@ -157,10 +157,6 @@ h1 {
   margin-top: 50px;
 }
 
-#logoVistaMuro {
-  width: 120px;
-}
-
 /*.datosPublicacionesDeFormulario
 
 }*/
@@ -192,17 +188,69 @@ height: 38px;
   width: 110px;
 height: 38px;
 }
-
-.seccionMuro{
+/*Aqui inicia el muro*/
+header{
   background: #19acbd;
   width: 428px;
   height:124px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
-#logoVistaMuroImagen{
-  width: 121px;
+#logoVistaMuro{
+  width: 160px;
+  margin-left: 20px;
 }
 
+#botonCerrarSesion{
+  background-color: transparent;
+  width: 250px;
+  height: 38px;
+  font-size: 22px; 
+  color: #fff;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  margin-right: 20px;
+}
 
+#areaParaEscribirPublicaciones{
+  background: aliceblue;
+  /* align-content: center; */
+  display: flex; 
+  justify-content: center; 
+}
+
+#bloqueParaEscribirLaPublicacion{
+  /* border-color: #e8098a;
+  width: auto;
+  height: 100px;
+  border-style: solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-right:0px; */
+
+  background-color: #8268be;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#inputCajaDeCreacionDePublicaciones{
+font-size: 20px;
+width: 300px;
+height: 55px;
+}
+
+#botonDePublicaciones{
+  background-color: #e8098a;
+  border: none;
+  border-radius: 10px;
+  width: 48px;
+  height: 38px;
+ 
+}
 
