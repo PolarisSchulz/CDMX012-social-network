@@ -45,7 +45,7 @@ export const Muro = () => {
   });
 
   // Seccion blanca del cuerpo - MAIN
-  const areaParaEscribirPublicaciones = document.createElement('div'); // Aquí empieza el color blanquito
+  const areaParaEscribirPublicaciones = document.createElement('main'); // Aquí empieza el color blanquito
   areaParaEscribirPublicaciones.setAttribute('id', 'areaParaEscribirPublicaciones');
   // area de escribir el texto a publicar - ¿A donde estas pensando viajar?
   const bloqueParaEscribirLaPublicacion = document.createElement('section');
@@ -132,13 +132,19 @@ export const Muro = () => {
     logoVistaMuroImagen,
     botonCerrarSesion,
   );
+
+  areaParaEscribirPublicaciones.append(
+    bloqueParaEscribirLaPublicacion,
+    textoDeLaPublicacion,
+  );
+
   bloqueParaEscribirLaPublicacion.append(
     inputCajaDeCreacionDePublicaciones,
     botonDePublicaciones,
   )
 
   // eslint-disable-next-line max-len
-  container.append(seccionMuro, areaParaEscribirPublicaciones, bloqueParaEscribirLaPublicacion, textoDeLaPublicacion);
+  container.append(seccionMuro, areaParaEscribirPublicaciones,);
 
   return container;
 };

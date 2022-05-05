@@ -217,32 +217,30 @@ header{
 }
 
 #areaParaEscribirPublicaciones{
-  background: aliceblue;
-  /* align-content: center; */
+  background: #8268be;
+  width: 428px;
   display: flex; 
-  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
 }
 
 #bloqueParaEscribirLaPublicacion{
-  /* border-color: #e8098a;
-  width: auto;
+  background: #ffffff;
+  border-color: #e8098a;
+  width: 360px;
   height: 100px;
   border-style: solid;
+  border-radius: 14px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  margin-right:0px; */
-
-  background-color: #8268be;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* flex-direction: column; */
 }
 
 #inputCajaDeCreacionDePublicaciones{
 font-size: 20px;
 width: 300px;
 height: 55px;
+border: none;
+border-radius: 16px;
 }
 
 #botonDePublicaciones{
@@ -251,6 +249,13 @@ height: 55px;
   border-radius: 10px;
   width: 48px;
   height: 38px;
- 
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 7px;
+}
+#areaDondeSeAcomodanLasPublicaciones{
+ background-color: #19acbd;
+ width: 300px;
+ height: 300px;
 }
 
