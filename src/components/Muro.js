@@ -108,6 +108,8 @@ export const Muro = () => {
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
       const tituloPublicacion = document.createElement('h1');
+      tituloPublicacion.setAttribute('id', 'tituloPublicacion');
+      tituloPublicacion.style.border = 'solid 2px yellow';
       tituloPublicacion.style.color = 'black';
       tituloPublicacion.innerText = publicacion.text;
       textoDeLaPublicacion.append(tituloPublicacion);
@@ -135,13 +137,20 @@ export const Muro = () => {
 
   areaParaEscribirPublicaciones.append(
     bloqueParaEscribirLaPublicacion,
-    textoDeLaPublicacion,
+    areaDondeSeAcomodanLasPublicaciones,
   );
+
+  areaDondeSeAcomodanLasPublicaciones.append(
+    areaTextoEdicionChidoMasBorrado,
+  );
+  areaTextoEdicionChidoMasBorrado.append(
+    textoDeLaPublicacion
+  )
 
   bloqueParaEscribirLaPublicacion.append(
     inputCajaDeCreacionDePublicaciones,
     botonDePublicaciones,
-  )
+  );
 
   // eslint-disable-next-line max-len
   container.append(seccionMuro, areaParaEscribirPublicaciones,);
