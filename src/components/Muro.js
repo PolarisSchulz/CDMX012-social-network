@@ -87,9 +87,6 @@ export const Muro = () => {
   const areaTextoEdicionChidoMasBorrado = document.createElement('section'); // Borde rosita - Revisar Imagen
   areaTextoEdicionChidoMasBorrado.className = 'areaTextoEdicionChidoMasBorrado';
 
-  // Area donde se acomodan los post publicados
-  const areaDondeSeAcomodanLasPublicaciones = document.createElement('section'); // Borde verde - Revisar Imagen
-  areaDondeSeAcomodanLasPublicaciones.setAttribute('id', 'areaDondeSeAcomodanLasPublicaciones');
 
   // seccion negra de texto y edicion
   const seccionDeTextoMasEdicion = document.createElement('section');
@@ -107,10 +104,8 @@ export const Muro = () => {
 
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
-      const tituloPublicacion = document.createElement('h1');
+      const tituloPublicacion = document.createElement('p');
       tituloPublicacion.setAttribute('id', 'tituloPublicacion');
-      tituloPublicacion.style.border = 'solid 2px yellow';
-      tituloPublicacion.style.color = 'black';
       tituloPublicacion.innerText = publicacion.text;
       textoDeLaPublicacion.append(tituloPublicacion);
     });
@@ -137,14 +132,11 @@ export const Muro = () => {
 
   areaParaEscribirPublicaciones.append(
     bloqueParaEscribirLaPublicacion,
-    areaDondeSeAcomodanLasPublicaciones,
-  );
-
-  areaDondeSeAcomodanLasPublicaciones.append(
     areaTextoEdicionChidoMasBorrado,
   );
+
   areaTextoEdicionChidoMasBorrado.append(
-    textoDeLaPublicacion
+    textoDeLaPublicacion,
   )
 
   bloqueParaEscribirLaPublicacion.append(
