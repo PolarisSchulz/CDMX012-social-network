@@ -1,7 +1,13 @@
- body, div, h1, h2, h3, input, p {
+body,
+div,
+h1,
+h2,
+h3,
+input,
+p {
   margin: 0;
   padding: 0;
-} 
+}
 
 :root {
   --color-blue: #19acbd;
@@ -157,17 +163,13 @@ h1 {
   margin-top: 50px;
 }
 
-/*.datosPublicacionesDeFormulario
-
-}*/
-
-#botonDeMeGustas{
+#botonDeMeGustas {
   background-color: #e8098a;
-  border: none; 
-  color: white; 
-  padding: 12px 16px; 
-  font-size: 16px; 
-  cursor: pointer; 
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* Darker background on mouse-over */
@@ -175,40 +177,42 @@ h1 {
   background-color: #19acbd;
 }
 
-#botonDePublicaciones{
+#botonDePublicaciones {
   width: 110px;
-  height: 38px; 
-}
-#inputEditarPublicaciones{
-width: 110px;
-height: 38px;
+  height: 38px;
 }
 
-#inputBasuraPublicaciones{
+#inputEditarPublicaciones {
   width: 110px;
-height: 38px;
+  height: 38px;
 }
+
+#inputBasuraPublicaciones {
+  width: 110px;
+  height: 38px;
+}
+
 /*Aqui inicia el muro*/
-header{
+header {
   background: #19acbd;
   width: 428px;
-  height:124px;
+  height: 124px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
 }
 
-#logoVistaMuro{
+#logoVistaMuro {
   width: 160px;
   margin-left: 20px;
 }
 
-#botonCerrarSesion{
+#botonCerrarSesion {
   background-color: transparent;
   width: 250px;
   height: 38px;
-  font-size: 22px; 
+  font-size: 22px;
   color: #fff;
   border: none;
   outline: none;
@@ -216,34 +220,37 @@ header{
   margin-right: 20px;
 }
 
-#areaParaEscribirPublicaciones{
-  background: #8268be;
+/* Esto es main */
+#areaParaEscribirPublicaciones {
+  background: aliceblue;
   width: 428px;
-  display: flex; 
+  display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-#bloqueParaEscribirLaPublicacion{
+#bloqueParaEscribirLaPublicacion {
   background: #ffffff;
-  border-color: #e8098a;
   width: 360px;
   height: 100px;
-  border-style: solid;
+  border: solid 2px #e8098a;
+  ;
   border-radius: 14px;
   display: flex;
-  /* flex-direction: column; */
+  margin-top: 7px;
+  box-sizing: border-box;
 }
 
-#inputCajaDeCreacionDePublicaciones{
-font-size: 20px;
-width: 300px;
-height: 55px;
-border: none;
-border-radius: 16px;
+#inputCajaDeCreacionDePublicaciones {
+  font-size: 20px;
+  width: 300px;
+  height: 55px;
+  border: none;
+  border-radius: 16px;
+  border: 0;
 }
 
-#botonDePublicaciones{
+#botonDePublicaciones {
   background-color: #e8098a;
   border: none;
   border-radius: 10px;
@@ -253,9 +260,27 @@ border-radius: 16px;
   align-self: flex-end;
   margin-bottom: 7px;
 }
-#areaDondeSeAcomodanLasPublicaciones{
- background-color: #19acbd;
- width: 300px;
- height: 300px;
+
+#muroDePublicaciones {
+  display: flex;
+  flex-direction: column;
 }
 
+.botonBasuraPublicaciones {
+  width: 300px;
+  height: 200px;
+  background-color: yellow;
+}
+
+#tituloPublicacion {
+  word-wrap: break-word;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 360px;
+  border: solid 2px #e8098a;
+  border-radius: 12px;
+  margin-top: 7px;
+  color: black;
+  font-size: 20px;
+  padding: 7px;
+}
