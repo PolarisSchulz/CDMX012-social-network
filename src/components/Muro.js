@@ -83,10 +83,12 @@ export const Muro = () => {
   });
   // Aqui termina area de escribir el texto a publicar - ¿A donde estas pensando viajar?
 
-  // Todo donde se acomodan el los textos publicados mas boton editar, masboton borrar, mas boton chido
+
+  // T odo donde se acomodan el los textos publicados
+  // mas boton editar, mas boton borrar, mas boton chido
+
   const areaTextoEdicionChidoMasBorrado = document.createElement('section'); // Borde rosita - Revisar Imagen
   areaTextoEdicionChidoMasBorrado.className = 'areaTextoEdicionChidoMasBorrado';
-
 
   // seccion negra de texto y edicion
   const seccionDeTextoMasEdicion = document.createElement('section');
@@ -107,8 +109,21 @@ export const Muro = () => {
       const tituloPublicacion = document.createElement('p');
       tituloPublicacion.setAttribute('id', 'tituloPublicacion');
       tituloPublicacion.innerText = publicacion.text;
-      textoDeLaPublicacion.append(tituloPublicacion);
-    });
+
+      // Input borrar
+      const inputBasuraPublicaciones = document.createElement('input');
+      inputBasuraPublicaciones.setAttribute('type', 'image');
+      inputBasuraPublicaciones.setAttribute('id', 'inputBasuraPublicaciones');
+      inputBasuraPublicaciones.src = '../images/sombrero-basura.png';
+
+      // const botonesDeBasura = document.querySelectorAll('#inputBasuraPublicaciones');
+      // botonesDeBasura.forEach((btn) => {
+      //   btn.addEventListener('click', () => {
+      //     eliminarPublicaciones();
+      //     console.log('Hola Abis');
+      //   });
+        textoDeLaPublicacion.append(tituloPublicacion, inputBasuraPublicaciones);});
+    // });
   });
 
   // Boton de editar
@@ -137,7 +152,7 @@ export const Muro = () => {
 
   areaTextoEdicionChidoMasBorrado.append(
     textoDeLaPublicacion,
-  )
+  );
 
   bloqueParaEscribirLaPublicacion.append(
     inputCajaDeCreacionDePublicaciones,
@@ -145,7 +160,7 @@ export const Muro = () => {
   );
 
   // eslint-disable-next-line max-len
-  container.append(seccionMuro, areaParaEscribirPublicaciones,);
+  container.append(seccionMuro, areaParaEscribirPublicaciones);
 
   return container;
 };
