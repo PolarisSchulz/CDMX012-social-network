@@ -64,8 +64,10 @@ export const Muro = () => {
   inputCajaDeCreacionDePublicaciones.className = 'inputCajaDeCreacionDePublicaciones';
 
   const resetearDivPrincipal = () => {
+    // eslint-disable-next-line no-use-before-define
     if (textoDeLaPublicacion.childNodes.length > 0) {
       // console.log('div que almacena tiene hijos');
+      // eslint-disable-next-line no-use-before-define
       textoDeLaPublicacion.innerText = '';
     }
   };
@@ -82,7 +84,6 @@ export const Muro = () => {
     inputCajaDeCreacionDePublicaciones.value = '';
   });
   // Aqui termina area de escribir el texto a publicar - ¿A donde estas pensando viajar?
-
 
   // T odo donde se acomodan el los textos publicados
   // mas boton editar, mas boton borrar, mas boton chido
@@ -103,9 +104,11 @@ export const Muro = () => {
     const querySnapshot = await obtencionDePublicaciones();
     // si divquealamcena las publicaciones ya tiene  contenido borrar el contenido
     // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
-
+    let botonesDeBasura = '';
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
+      // console.log(doc.id);
+      
       const tituloPublicacion = document.createElement('p');
       tituloPublicacion.setAttribute('id', 'tituloPublicacion');
       tituloPublicacion.innerText = publicacion.text;
@@ -114,17 +117,21 @@ export const Muro = () => {
       const inputBasuraPublicaciones = document.createElement('input');
       inputBasuraPublicaciones.setAttribute('type', 'image');
       inputBasuraPublicaciones.setAttribute('id', 'inputBasuraPublicaciones');
+      inputBasuraPublicaciones.setAttribute('data-id', doc.id);
       inputBasuraPublicaciones.src = '../images/sombrero-basura.png';
 
-      // const botonesDeBasura = document.querySelectorAll('#inputBasuraPublicaciones');
-      // botonesDeBasura.forEach((btn) => {
-      //   btn.addEventListener('click', () => {
-      //     eliminarPublicaciones();
-      //     console.log('Hola Abis');
-      //   });
-        textoDeLaPublicacion.append(tituloPublicacion, inputBasuraPublicaciones);});
-    // });
-  });
+      botonesDeBasura = document.querySelectorAll('#inputBasuraPublicaciones');
+        
+      tituloPublicacion.append(inputBasuraPublicaciones);
+      textoDeLaPublicacion.append(tituloPublicacion);
+    });
+    botonesDeBasura.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        eliminarPublicaciones(dataset.id);
+        console.log(dataset.id);
+      });
+    });
+    });
 
   // Boton de editar
 
@@ -132,28 +139,25 @@ export const Muro = () => {
   const areaDondeSeAcomodaChidoMasBorrar = document.createElement('section'); // Borde azul - Revisar Imagen
   areaDondeSeAcomodaChidoMasBorrar.className = 'areaDondeSeAcomodaChidoMasBorrar';
 
-  // Boton de Borrar
-
-  // Boton de Likes
-
   // Hasta aqui termina el main
 
-  // Nodos que se imprimen en el DOM
+// ++++++++++++++++++++++++++++++ Nodos que se imprimen en el DOM
   seccionMuro.append(
     // logoVistaMuroDiv,
     logoVistaMuroImagen,
     botonCerrarSesion,
   );
 
+// ++++++++++++++++++++++++++++++Esto es el main
   areaParaEscribirPublicaciones.append(
     bloqueParaEscribirLaPublicacion,
     areaTextoEdicionChidoMasBorrado,
   );
-
+// ++++++++++++++++++++++++++++++Junta los 4 elementos a publicar
   areaTextoEdicionChidoMasBorrado.append(
     textoDeLaPublicacion,
   );
-
+// ++++++++++++++++++++++++++++++Esto es para enviar el mensaje
   bloqueParaEscribirLaPublicacion.append(
     inputCajaDeCreacionDePublicaciones,
     botonDePublicaciones,
