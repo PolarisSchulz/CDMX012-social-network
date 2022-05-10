@@ -31,4 +31,3 @@ export const onBtenerPublicaciones = (callback) => onSnapshot(collection(db, 'gu
 
 //Eliminación de la publicación
 export const eliminarPublicaciones = (id) => deleteDoc(doc(db, 'guardarPublicaciones', id));
-

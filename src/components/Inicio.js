@@ -35,6 +35,7 @@ export const inicio = () => {
   botonRegistro.textContent = 'Registro';
   botonRegistro.addEventListener('click', () => {
     navegador('/registro'); // PREGUNTAR!!!
+    console.log("aceptamiscambisGitHub")
   });
 
   nodoH3.textContent = '-o-';
