@@ -25,8 +25,6 @@ export const Muro = () => {
   const seccionMuro = document.createElement('header');
 
   // Div para insertar el logo
-  // const logoVistaMuroDiv = document.createElement('div');
-  // logoVistaMuroDiv.setAttribute('id', ' logoVistaMuroDiv');
   const logoVistaMuroImagen = document.createElement('img');
   logoVistaMuroImagen.src = '../images/logo-horizontal.png';
   logoVistaMuroImagen.setAttribute('id', 'logoVistaMuro');
@@ -80,9 +78,10 @@ export const Muro = () => {
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault();
     guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
-    resetearDivPrincipal();
+
+    // eslint-disable-next-line max-len
+    resetearDivPrincipal(); // con este se resetea el cargado de la pagina, y tambien lo usamos para el boton de borrar
     inputCajaDeCreacionDePublicaciones.value = '';
-    console.log("prueba#6253453276")
   });
   // Aqui termina area de escribir el texto a publicar - ¿A donde estas pensando viajar?
 
@@ -109,27 +108,27 @@ export const Muro = () => {
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
       // console.log(doc.id);
-      
       const tituloPublicacion = document.createElement('p');
-      tituloPublicacion.setAttribute('id', 'tituloPublicacion');
+      tituloPublicacion.setAttribute('id', 'tituloPublicaciones');
       tituloPublicacion.innerText = publicacion.text;
 
       // Input borrar
-      const inputBasuraPublicaciones = document.createElement('input');
-      inputBasuraPublicaciones.setAttribute('type', 'image');
-      inputBasuraPublicaciones.setAttribute('id', 'inputBasuraPublicaciones');
-      inputBasuraPublicaciones.setAttribute('data-id', doc.id);
-      inputBasuraPublicaciones.src = '../images/sombrero-basura.png';
+      const botonBasuraPublicaciones = document.createElement('img');
+      botonBasuraPublicaciones.setAttribute('id', 'botonBasuraPublicacionesID');
+      botonBasuraPublicaciones.setAttribute('class', 'botonBorrar');
+      botonBasuraPublicaciones.setAttribute('data-id', doc.id);
+      botonBasuraPublicaciones.setAttribute('src', '../images/sombrero-basura.png');
 
-      botonesDeBasura = document.querySelectorAll('#inputBasuraPublicaciones');
+      botonesDeBasura = document.querySelectorAll('.botonBorrar');
         
-      tituloPublicacion.append(inputBasuraPublicaciones);
+      tituloPublicacion.append(botonBasuraPublicaciones);
       textoDeLaPublicacion.append(tituloPublicacion);
     });
     botonesDeBasura.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         eliminarPublicaciones(dataset.id);
-        console.log(dataset.id);
+        // console.log(dataset.id);
+        resetearDivPrincipal();
       });
     });
     });
@@ -169,5 +168,3 @@ export const Muro = () => {
 
   return container;
 };
-
-// Andy se fue a ver a koke
