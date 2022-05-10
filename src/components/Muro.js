@@ -82,6 +82,7 @@ export const Muro = () => {
     guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
     resetearDivPrincipal();
     inputCajaDeCreacionDePublicaciones.value = '';
+    console.log("prueba#6253453276")
   });
   // Aqui termina area de escribir el texto a publicar - ¿A donde estas pensando viajar?
 
