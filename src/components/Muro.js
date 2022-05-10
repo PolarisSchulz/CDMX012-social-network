@@ -109,6 +109,7 @@ export const Muro = () => {
     // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
     let botonesDeBasura = '';
     let botonesDeEditar = '';
+
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
       // console.log(doc.id);
@@ -151,9 +152,13 @@ export const Muro = () => {
 
     botonesDeEditar.forEach((btnEdit) => {
       btnEdit.addEventListener('click', async (e) => {
-        const doc = await editarPublicaciones(e.target.dataset.id);
+        const documento = await editarPublicaciones(e.target.dataset.id);
       
-        console.log(doc.data());
+        const texto = documento.data();
+        container['inputCajaDeCreacionDePublicaciones'].value = texto.textoDeLaPublicacion;
+        console.log ('andy mimiendo, ivonne mimiendo más');
+
+
         // resetearDivPrincipal();
       });
     });
