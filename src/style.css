@@ -185,7 +185,7 @@ h1 {
   width: 30px;
 }
 
-#inputBasuraPublicaciones {
+#botonBasuraPublicacionesID {
   width: 30px;
   display: flex;
   justify-content: flex-end;
@@ -264,13 +264,7 @@ header {
   flex-direction: column;
 }
 
-.botonBasuraPublicaciones {
-  width: 300px;
-  height: 200px;
-  background-color: yellow;
-}
-
-#tituloPublicacion {
+#tituloPublicaciones {
   word-wrap: break-word;
   box-sizing: border-box;
   background-color: #fff;
