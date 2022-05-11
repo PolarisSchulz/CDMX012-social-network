@@ -220,6 +220,7 @@ header {
   border: none;
   border-radius: 16px;
   border: 0;
+  outline: none;
 }
 
 #botonDePublicaciones {

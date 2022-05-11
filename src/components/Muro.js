@@ -12,6 +12,7 @@ import {
   onBtenerPublicaciones,
   eliminarPublicaciones,
   editarPublicaciones,
+  actualizacionDePublicaciones,
 } from '../lib/InstalacionFirebase.js';
 // eslint-disable-next-line import/no-cycle
 import { navegador } from '../Router.js';
@@ -19,6 +20,10 @@ import { navegador } from '../Router.js';
 // Imprimir todo en el Muro
 export const Muro = () => {
   // Seccion que genera el área del header, donde abarcamos el logo y el boton de cerrar sesion
+
+  // Variables para poder editar y asi, se unen al bloque de la 89 a la 95 de muro
+  let editarEstado = false;
+  let textoEditadoID = '';
 
   // Contenedor
   document.body.style.backgroundColor = 'aliceblue';
@@ -46,7 +51,7 @@ export const Muro = () => {
   });
 
   // Seccion blanca del cuerpo - MAIN
-  const areaParaEscribirPublicaciones = document.createElement('main'); // Aquí empieza el color blanquito
+  const areaParaEscribirPublicaciones = document.createElement('form'); // Aquí empieza el color blanquito
   areaParaEscribirPublicaciones.setAttribute('id', 'areaParaEscribirPublicaciones');
   // area de escribir el texto a publicar - ¿A donde estas pensando viajar?
   const bloqueParaEscribirLaPublicacion = document.createElement('section');
@@ -80,7 +85,20 @@ export const Muro = () => {
   botonDePublicaciones.src = '../images/enter-post.png';
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault();
-    guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
+    // guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
+
+
+
+    // Condicional para poder editar se une con la 172 de muro
+    if (!editarEstado) {
+      guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
+    } else{
+      // eslint-disable-next-line max-len
+      actualizacionDePublicaciones(textoEditadoID, {
+        textoEditado: inputCajaDeCreacionDePublicaciones.value});
+      editarEstado = false;
+    }
+
 
     // eslint-disable-next-line max-len
     resetearDivPrincipal(); // con este se resetea el cargado de la pagina, y tambien lo usamos para el boton de borrar
@@ -102,6 +120,7 @@ export const Muro = () => {
   textoDeLaPublicacion.setAttribute('id', 'muroDePublicaciones');
   // eslint-disable-next-line max-len
 
+
   onBtenerPublicaciones(async () => {
     // querySnapshot: datos del momento
     const querySnapshot = await obtencionDePublicaciones();
@@ -109,6 +128,7 @@ export const Muro = () => {
     // de lo contrario , proceder con el códgio que ya existe que se encuentra aqui abajo
     let botonesDeBasura = '';
     let botonesDeEditar = '';
+  
 
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
@@ -155,9 +175,13 @@ export const Muro = () => {
         const documento = await editarPublicaciones(e.target.dataset.id);
       
         const texto = documento.data();
-        container['inputCajaDeCreacionDePublicaciones'].value = texto.textoDeLaPublicacion;
-        console.log ('andy mimiendo, ivonne mimiendo más');
+        // eslint-disable-next-line dot-notation
+        areaParaEscribirPublicaciones['inputCajaDeCreacionDePublicaciones'].value = texto.text;
+      
+        editarEstado = true;
+        textoEditadoID = e.target.dataset.id;
 
+        // areaParaEscribirPublicaciones['botonDePublicaciones'].innerText = 'Actualizar';
 
         // resetearDivPrincipal();
       });

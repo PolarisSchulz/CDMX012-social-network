@@ -10,6 +10,7 @@ import {
   deleteDoc,
   getDoc,
   doc,
+  updateDoc,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js';
 // eslint-disable-next-line no-unused-vars
@@ -43,3 +44,5 @@ export const eliminarPublicaciones = (id) => deleteDoc(doc(db, 'guardarPublicaci
 
 // Editar la publicación
 export const editarPublicaciones = (id) => getDoc(doc(db, 'guardarPublicaciones', id));
+
+export const actualizacionDePublicaciones = (id, nuevoMensaje) => updateDoc(doc(db, 'guardarPublicaciones', id), nuevoMensaje);
