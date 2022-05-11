@@ -227,8 +227,7 @@ header {
   background-color: #e8098a;
   border: none;
   border-radius: 10px;
-  width: 48px;
-  height: 38px;
+  width: 40px;
   display: flex;
   align-self: flex-end;
   margin-bottom: 7px;
@@ -264,10 +263,6 @@ header {
 /* Darker background on mouse-over */
 #botonDeMeGustas:hover {
   background-color: #19acbd;
-}
-
-#botonDePublicaciones {
-  width: 30px;
 }
 
 #botonEditarPublicacionesID {

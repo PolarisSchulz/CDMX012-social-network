@@ -79,10 +79,11 @@ export const Muro = () => {
   };
 
   // Icono/Boton para publicar
-  const botonDePublicaciones = document.createElement('button');
+  const botonDePublicaciones = document.createElement('img');
   // botonDePublicaciones.setAttribute('type', 'image');
   botonDePublicaciones.setAttribute('id', 'botonDePublicaciones');
-  botonDePublicaciones.src = '../images/enter-post.png';
+  botonDePublicaciones.setAttribute('src', '../images/enter-post.png');
+  // botonDePublicaciones.src = '../images/enter-post.png';
   botonDePublicaciones.addEventListener('click', (e) => {
     e.preventDefault();
     // guardarPublicaciones(inputCajaDeCreacionDePublicaciones.value);
@@ -97,6 +98,7 @@ export const Muro = () => {
       actualizacionDePublicaciones(textoEditadoID, {
         textoEditado: inputCajaDeCreacionDePublicaciones.value});
       editarEstado = false;
+      // console.log(textoEditado);
     }
 
 
